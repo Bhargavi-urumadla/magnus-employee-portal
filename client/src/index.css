@@ -1,111 +1,5462 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+* {
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
 body {
-  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  background: #ecf0f5;
+  font-size: 14px;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+button {
+  cursor: pointer;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+/* =========================================================
+   MAIN APPLICATION
+========================================================= */
+
+.magnus-app {
+  min-height: 100vh;
+  background: #ecf0f5;
+  padding-top: 80px;
+  padding-left: 288px;
 }
 
-code {
+/* =========================================================
+   TOP HEADER
+========================================================= */
+
+.magnus-header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+
+  background: #3c8dbc;
+  color: white;
+}
+
+.magnus-logo {
+  width: 288px;
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 96px;
+
+  font-size: 25px;
+  font-weight: 700;
+
+  background: #3c8dbc;
+}
+
+.header-right {
+  margin-left: auto;
+  padding-right: 30px;
+}
+
+.logout-button {
+  border: 0;
+  background: transparent;
+  color: white;
+
   font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+
+  padding: 10px 12px;
+}
+
+.logout-icon {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.magnus-sidebar {
+  position: fixed;
+  z-index: 999;
+
+  top: 80px;
+  left: 0;
+  bottom: 0;
+
+  width: 288px;
+
+  overflow-y: auto;
+
+  background: #222d32;
+  color: #b8c7ce;
+}
+
+.sidebar-user {
+  height: 82px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 10px 15px;
+
+  background: #222d32;
+}
+
+.user-avatar {
+  width: 55px;
+  height: 55px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 15px;
+
+  border: 1px solid #777;
+
+  background: white;
+
+  color: #222;
+  font-size: 24px;
+}
+
+.user-information {
+  line-height: 1.5;
+}
+
+.user-name {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.user-role {
+  color: white;
+  font-size: 14px;
+}
+
+.role-icon {
+  margin-right: 8px;
+}
+
+.sidebar-item {
+  width: 100%;
+  min-height: 55px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 20px;
+
+  border: 0;
+
+  color: #b8c7ce;
+  background: #222d32;
+
+  text-decoration: none;
+
+  font-size: 16px;
+
+  text-align: left;
+}
+
+.sidebar-item:hover {
+  color: white;
+  background: #2c3b41;
+}
+
+.sidebar-item-active {
+  color: white;
+  background: #1e282c;
+
+  border-left: 3px solid #3c8dbc;
+}
+
+.sidebar-button {
+  position: relative;
+}
+
+.sidebar-parent-active {
+  color: white;
+  background: #1e282c;
+}
+
+.sidebar-icon {
+  width: 25px;
+
+  margin-right: 8px;
+
+  text-align: center;
+
+  color: #b8c7ce;
+}
+
+.sidebar-label {
+  flex: 1;
+}
+
+.sidebar-arrow {
+  font-size: 20px;
+}
+
+.sidebar-submenu {
+  background: #2c3b41;
+}
+
+.sidebar-subitem {
+  min-height: 43px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 55px;
+  padding-right: 15px;
+
+  color: #9fb6c2;
+
+  text-decoration: none;
+
+  font-size: 15px;
+}
+
+.sidebar-subitem span {
+  width: 25px;
+  margin-right: 5px;
+}
+
+.sidebar-subitem:hover {
+  color: white;
+  background: #344950;
+}
+
+.sidebar-subitem-active {
+  color: white;
+  background: #344950;
+}
+
+.more-submenu .sidebar-subitem {
+  padding-left: 20px;
+}
+
+/* =========================================================
+   MAIN AREA
+========================================================= */
+
+.magnus-main {
+  min-height: calc(100vh - 135px);
+}
+
+.page-wrapper {
+  min-height: calc(100vh - 135px);
+
+  padding: 18px 18px 40px;
+
+  background: #ecf0f5;
+}
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.page-heading-row {
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 400;
+  color: #222;
+}
+
+.page-title-light {
+  margin-left: 15px;
+
+  color: #777;
+
+  font-size: 17px;
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  color: #444;
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   HOME PAGE
+========================================================= */
+
+.home-content {
+  text-align: center;
+
+  padding-top: 100px;
+}
+
+.home-content h1 {
+  margin: 0;
+
+  font-size: 40px;
+  font-weight: 400;
+
+  color: #222;
+}
+
+.home-subtitle {
+  margin-top: 48px;
+
+  font-size: 16px;
+}
+
+.home-message {
+  margin: 105px auto 0;
+
+  max-width: 1450px;
+
+  line-height: 2;
+}
+
+.home-message p {
+  margin: 4px 0;
+}
+
+.home-info-card {
+  margin: 25px auto 0;
+
+  max-width: 1530px;
+
+  padding: 18px 20px;
+
+  text-align: left;
+
+  background: white;
+
+  border: 1px solid #ddd;
+  border-top: 3px solid #3c8dbc;
+
+  border-radius: 3px;
+
+  font-size: 16px;
+}
+
+.home-info-card p {
+  margin: 5px 0 15px;
+}
+
+.home-info-card a {
+  color: #3c8dbc;
+  text-decoration: none;
+}
+
+.home-highlight {
+  margin: 25px auto;
+
+  max-width: 1530px;
+
+  padding: 5px 15px;
+
+  text-align: left;
+
+  background: white;
+
+  border: 1px solid #ddd;
+  border-top: 3px solid #3c8dbc;
+
+  font-weight: 700;
+}
+
+.home-highlight::first-line {
+  background: yellow;
+}
+
+/* =========================================================
+   EMPLOYEE CREATE
+========================================================= */
+
+.employee-panel,
+.search-panel,
+.tabs-panel {
+  background: white;
+
+  border: 1px solid #ddd;
+
+  border-top: 3px solid #00a7d0;
+
+  border-radius: 2px;
+}
+
+.panel-heading,
+.search-panel-heading {
+  min-height: 50px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 13px;
+
+  border-bottom: 1px solid #eee;
+
+  font-size: 20px;
+}
+
+.employee-form {
+  padding: 15px 32px 20px;
+}
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px 38px;
+}
+
+.form-group {
+  min-width: 0;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #111;
+
+  font-weight: 600;
+
+  font-size: 15px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  border: 1px solid #d4d9de;
+
+  background: white;
+
+  padding: 9px 13px;
+
+  outline: none;
+
+  font-size: 15px;
+}
+
+.form-group input,
+.form-group select {
+  height: 43px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #3c8dbc;
+}
+
+.full-width {
+  margin-top: 18px;
+}
+
+.gender-group {
+  display: flex;
+  align-items: center;
+
+  padding-top: 29px;
+}
+
+.gender-group > label {
+  margin: 0 8px 0 0;
+}
+
+.gender-options {
+  display: flex;
+  gap: 8px;
+}
+
+.gender-options label {
+  margin: 0;
+
+  font-weight: 400;
+}
+
+.gender-options input {
+  width: auto;
+  height: auto;
+
+  margin-right: 3px;
+}
+
+.location-grid {
+  display: grid;
+
+  grid-template-columns: 300px 300px 1fr;
+
+  align-items: end;
+
+  gap: 35px;
+
+  margin-top: 18px;
+}
+
+.other-city {
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 15px;
+}
+
+.other-city input {
+  width: 20px;
+  height: 20px;
+}
+
+.skills-section {
+  margin-top: 55px;
+}
+
+.skills-section h3 {
+  margin: 0;
+
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.skills-divider {
+  height: 1px;
+
+  margin-top: 25px;
+
+  background: #eee;
+}
+
+.skills-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  row-gap: 12px;
+
+  margin-top: 38px;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  font-size: 15px;
+}
+
+.skill-item input {
+  width: 15px;
+  height: 15px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 60px;
+}
+
+.save-button,
+.cancel-button {
+  border: 0;
+
+  padding: 9px 16px;
+
+  border-radius: 3px;
+
+  color: white;
+
+  font-size: 15px;
+}
+
+.save-button {
+  background: #00a65a;
+}
+
+.cancel-button {
+  background: #dd4b39;
+}
+
+.save-button:hover {
+  background: #008d4c;
+}
+
+.cancel-button:hover {
+  background: #c9302c;
+}
+
+/* =========================================================
+   EMPLOYEE SEARCH
+========================================================= */
+
+.search-panel-heading {
+  justify-content: space-between;
+}
+
+.add-employee-button {
+  border: 0;
+
+  padding: 8px 13px;
+
+  border-radius: 3px;
+
+  background: #00c0ef;
+
+  color: white;
+
+  font-size: 14px;
+}
+
+.search-controls {
+  display: grid;
+
+  grid-template-columns: 410px 410px auto;
+
+  align-items: end;
+
+  gap: 38px;
+
+  padding: 22px 32px 35px;
+}
+
+.search-field label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  font-size: 15px;
+}
+
+.search-field input {
+  width: 100%;
+  height: 43px;
+
+  padding: 8px 13px;
+
+  border: 1px solid #d4d9de;
+
+  outline: none;
+
+  font-size: 15px;
+}
+
+.search-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.search-button,
+.clear-button {
+  height: 43px;
+
+  padding: 0 17px;
+
+  border: 0;
+
+  border-radius: 3px;
+
+  color: white;
+
+  font-weight: 600;
+
+  font-size: 14px;
+}
+
+.search-button {
+  background: #00a65a;
+}
+
+.clear-button {
+  background: #dd4b39;
+}
+
+.employee-table-wrapper {
+  overflow-x: auto;
+
+  padding: 0 18px 25px;
+}
+
+.employee-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  background: white;
+
+  font-size: 14px;
+}
+
+.employee-table th,
+.employee-table td {
+  padding: 12px 9px;
+
+  border: 1px solid #eee;
+
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+.employee-table th {
+  background: #fafafa;
+
+  font-weight: 700;
+}
+
+.employee-table tbody tr:hover {
+  background: #f8f8f8;
+}
+
+.gender-cell {
+  text-align: center !important;
+
+  color: #3c8dbc;
+
+  font-size: 20px;
+}
+
+.action-cell {
+  text-align: center !important;
+}
+
+.edit-button,
+.delete-button {
+  border: 0;
+
+  padding: 5px 9px;
+
+  margin: 0 3px;
+
+  border-radius: 3px;
+
+  color: white;
+
+  font-size: 13px;
+}
+
+.edit-button {
+  background: #00a65a;
+}
+
+.delete-button {
+  background: #dd4b39;
+}
+
+.no-records {
+  text-align: center !important;
+
+  padding: 30px !important;
+
+  color: #777;
+}
+
+/* =========================================================
+   MORE PAGES
+========================================================= */
+
+.more-page {
+  padding-top: 18px;
+}
+
+.tabs-panel {
+  margin: 0 18px;
+
+  min-height: 285px;
+}
+
+.tabs-navigation {
+  display: flex;
+
+  border-bottom: 1px solid #ddd;
+
+  padding-left: 0;
+}
+
+.tabs-navigation button {
+  min-height: 54px;
+
+  padding: 0 20px;
+
+  border: 0;
+  border-right: 1px solid white;
+
+  background: #3c8dbc;
+
+  color: white;
+
+  font-size: 16px;
+}
+
+.tabs-navigation button.tab-active {
+  background: white;
+
+  color: #3c8dbc;
+
+  border-top: 3px solid #3c8dbc;
+}
+
+.tabs-content {
+  padding: 25px 30px;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+}
+
+.tabs-content p {
+  margin: 0 0 8px;
+}
+
+.tabs-input-row {
+  display: flex;
+
+  gap: 35px;
+
+  margin-top: 12px;
+}
+
+.tabs-input-row input {
+  width: 48%;
+  height: 43px;
+
+  border: 1px solid #d4d9de;
+}
+
+.tab-simple-content {
+  min-height: 180px;
+}
+
+.menu-content {
+  min-height: 285px;
+
+  padding: 28px;
+}
+
+.menu-list {
+  width: 450px;
+}
+
+.menu-option {
+  width: 100%;
+  height: 53px;
+
+  display: block;
+
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  background: #3c8dbc;
+
+  color: white;
+
+  font-size: 16px;
+}
+
+.menu-option:hover {
+  background: #337ca8;
+}
+
+.menu-selected {
+  margin-top: 20px;
+
+  font-size: 15px;
+}
+
+.coming-soon-panel {
+  margin: 0 18px;
+
+  min-height: 250px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+
+  border: 1px solid #ddd;
+  border-top: 3px solid #00a7d0;
+
+  font-size: 24px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.magnus-footer {
+  position: fixed;
+
+  left: 288px;
+  right: 0;
+  bottom: 0;
+
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 18px;
+
+  background: white;
+
+  border-top: 1px solid #d2d6de;
+
+  color: #222;
+
+  font-size: 14px;
+}
+
+.footer-link {
+  color: #3c8dbc;
+  font-weight: 700;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+  .magnus-app {
+    padding-left: 220px;
+  }
+
+  .magnus-logo {
+    width: 220px;
+    padding-left: 40px;
+  }
+
+  .magnus-sidebar {
+    width: 220px;
+  }
+
+  .magnus-footer {
+    left: 220px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-controls {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================================================
+   JALA / MAGNUS EMPLOYEE SEARCH SCREEN
+========================================================= */
+
+.employee-search-page {
+  padding: 0 15px 35px;
+  background: #ecf0f5;
+}
+
+/* PAGE HEADING */
+
+.search-page-heading {
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-title-area {
+  display: flex;
+  align-items: baseline;
+}
+
+.search-page-title {
+  font-size: 27px;
+  font-weight: 400;
+  color: #222;
+}
+
+.search-page-subtitle {
+  margin-left: 14px;
+
+  font-size: 16px;
+  color: #777;
+}
+
+.search-breadcrumb {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding-right: 5px;
+
+  color: #444;
+
+  font-size: 13px;
+}
+
+.breadcrumb-home-icon {
+  font-size: 13px;
+}
+
+.breadcrumb-arrow {
+  color: #aaa;
+}
+
+/* MAIN PANEL */
+
+.search-reference-panel {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #e4e4e4;
+  border-top: 3px solid #00a8d6;
+
+  border-radius: 2px;
+
+  min-height: 600px;
+}
+
+/* PANEL HEADER */
+
+.reference-panel-header {
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 10px 0 12px;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+.reference-panel-title {
+  color: #222;
+
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.reference-add-button {
+  height: 31px;
+
+  padding: 0 14px;
+
+  border: 0;
+
+  border-radius: 3px;
+
+  background: #00c0ef;
+
+  color: #ffffff;
+
+  font-size: 13px;
+}
+
+.reference-add-button:hover {
+  background: #00acd6;
+}
+
+/* SEARCH AREA */
+
+.reference-search-form {
+  display: grid;
+
+  grid-template-columns:
+    minmax(300px, 425px)
+    minmax(300px, 425px)
+    auto;
+
+  column-gap: 28px;
+
+  align-items: end;
+
+  padding: 18px 27px 40px;
+}
+
+.reference-search-field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #222;
+
+  font-size: 14px;
+}
+
+.reference-search-field input {
+  width: 100%;
+  height: 34px;
+
+  padding: 6px 12px;
+
+  border: 1px solid #d6dce1;
+
+  border-radius: 0;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #333;
+
+  font-size: 14px;
+}
+
+.reference-search-field input::placeholder {
+  color: #999;
+}
+
+.reference-search-field input:focus {
+  border-color: #3c8dbc;
+}
+
+/* BUTTONS */
+
+.reference-search-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.reference-search-button,
+.reference-clear-button {
+  height: 37px;
+
+  padding: 0 15px;
+
+  border: 0;
+
+  border-radius: 3px;
+
+  color: #ffffff;
+
+  font-size: 14px;
+}
+
+.reference-search-button {
+  background: #00a65a;
+}
+
+.reference-search-button:hover {
+  background: #008d4c;
+}
+
+.reference-clear-button {
+  background: #dd4b39;
+}
+
+.reference-clear-button:hover {
+  background: #c9302c;
+}
+
+/* TABLE */
+
+.reference-table-container {
+  width: 100%;
+
+  padding: 0 15px;
+
+  overflow-x: auto;
+}
+
+.reference-employee-table {
+  width: 100%;
+
+  table-layout: fixed;
+
+  border-collapse: collapse;
+
+  background: #ffffff;
+
+  font-size: 14px;
+}
+
+.reference-employee-table th,
+.reference-employee-table td {
+  height: 41px;
+
+  padding: 7px 7px;
+
+  border: 1px solid #eeeeee;
+
+  color: #222;
+
+  text-align: left;
+
+  vertical-align: middle;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.reference-employee-table th {
+  height: 37px;
+
+  background: #ffffff;
+
+  font-weight: 700;
+}
+
+.reference-employee-table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.reference-employee-table tbody tr:hover {
+  background: #f5f5f5;
+}
+
+/* TABLE COLUMN WIDTHS */
+
+.reference-employee-table th:nth-child(1),
+.reference-employee-table td:nth-child(1) {
+  width: 9%;
+}
+
+.reference-employee-table th:nth-child(2),
+.reference-employee-table td:nth-child(2) {
+  width: 9%;
+}
+
+.reference-employee-table th:nth-child(3),
+.reference-employee-table td:nth-child(3) {
+  width: 9%;
+}
+
+.reference-employee-table th:nth-child(4),
+.reference-employee-table td:nth-child(4) {
+  width: 20%;
+}
+
+.reference-employee-table th:nth-child(5),
+.reference-employee-table td:nth-child(5) {
+  width: 5%;
+}
+
+.reference-employee-table th:nth-child(6),
+.reference-employee-table td:nth-child(6) {
+  width: 10%;
+}
+
+.reference-employee-table th:nth-child(7),
+.reference-employee-table td:nth-child(7) {
+  width: 9%;
+}
+
+.reference-employee-table th:nth-child(8),
+.reference-employee-table td:nth-child(8) {
+  width: 10%;
+}
+
+.reference-employee-table th:nth-child(9),
+.reference-employee-table td:nth-child(9) {
+  width: 12%;
+}
+
+/* SORT ICON */
+
+.sort-icon {
+  float: right;
+
+  margin-left: 5px;
+
+  color: #d0d0d0;
+
+  font-size: 15px;
+}
+
+/* GENDER */
+
+.gender-column {
+  text-align: center !important;
+}
+
+.male-icon,
+.female-icon {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  color: #3c8dbc;
+
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.female-icon {
+  font-size: 25px;
+}
+
+/* ACTION */
+
+.action-column {
+  text-align: center !important;
+}
+
+.table-edit-button,
+.table-delete-button {
+  height: 24px;
+
+  padding: 0 8px;
+
+  margin: 0 2px;
+
+  border: 0;
+
+  border-radius: 3px;
+
+  color: #ffffff;
+
+  font-size: 12px;
+}
+
+.table-edit-button {
+  background: #00a65a;
+}
+
+.table-edit-button:hover {
+  background: #008d4c;
+}
+
+.table-delete-button {
+  background: #dd4b39;
+}
+
+.table-delete-button:hover {
+  background: #c9302c;
+}
+
+.no-employees {
+  height: 80px !important;
+
+  text-align: center !important;
+
+  color: #777 !important;
+}
+
+/* PAGINATION */
+
+.reference-pagination {
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 0;
+
+  padding: 17px 15px 8px;
+}
+
+.reference-pagination button {
+  height: 27px;
+
+  min-width: 43px;
+
+  padding: 0 9px;
+
+  border: 1px solid #ddd;
+
+  background: #ffffff;
+
+  color: #337ab7;
+
+  font-size: 12px;
+}
+
+.reference-pagination button:hover:not(:disabled) {
+  background: #eeeeee;
+}
+
+.reference-pagination button:disabled {
+  color: #aaa;
+
+  background: #ffffff;
+
+  cursor: not-allowed;
+}
+
+.reference-pagination .pagination-page-number {
+  color: #333;
+
+  background: #ffffff;
+
+  cursor: default;
+}
+
+.pagination-total {
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 12px;
+
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+
+  background: #f5f5f5;
+
+  color: #333;
+
+  font-size: 12px;
+}
+/* =========================================================
+   MAGNUS COMMON LAYOUT
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #ecf0f5;
+  color: #222;
+}
+
+/* APP */
+
+.magnus-app {
+  min-height: 100vh;
+  background: #ecf0f5;
+}
+
+/* HEADER */
+
+.magnus-header {
+  position: fixed;
+  z-index: 1000;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 62px;
+
+  display: flex;
+
+  background: #3c8dbc;
+}
+
+.magnus-logo {
+  width: 222px;
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 75px;
+
+  color: white;
+
+  font-size: 21px;
+  font-weight: bold;
+
+  background: #3c8dbc;
+}
+
+.magnus-header-right {
+  flex: 1;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  padding-right: 20px;
+}
+
+.logout-button {
+  border: 0;
+  outline: none;
+
+  background: transparent;
+
+  color: white;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  opacity: 0.85;
+}
+
+/* SIDEBAR */
+
+.magnus-sidebar {
+  position: fixed;
+  z-index: 999;
+
+  top: 62px;
+  left: 0;
+  bottom: 0;
+
+  width: 222px;
+
+  overflow-y: auto;
+
+  background: #222d32;
+
+  color: #b8c7ce;
+}
+
+/* PROFILE */
+
+.sidebar-profile {
+  height: 77px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 8px 10px;
+
+  background: #222d32;
+}
+
+.sidebar-avatar {
+  position: relative;
+
+  width: 48px;
+  height: 48px;
+
+  margin-right: 10px;
+
+  overflow: hidden;
+
+  border: 2px solid #fff;
+  border-radius: 50%;
+
+  background: #eeeeee;
+}
+
+.avatar-head {
+  position: absolute;
+
+  top: 7px;
+  left: 15px;
+
+  width: 15px;
+  height: 15px;
+
+  border-radius: 50%;
+
+  background: white;
+}
+
+.avatar-body {
+  position: absolute;
+
+  left: 8px;
+  bottom: -2px;
+
+  width: 29px;
+  height: 24px;
+
+  border-radius: 50% 50% 0 0;
+
+  background: white;
+}
+
+.sidebar-user-name {
+  margin-bottom: 6px;
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.sidebar-user-role {
+  color: white;
+
+  font-size: 13px;
+}
+
+/* SIDEBAR ITEMS */
+
+.sidebar-link {
+  width: 100%;
+  min-height: 43px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 16px;
+
+  border: 0;
+
+  background: #222d32;
+
+  color: #b8c7ce;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+.sidebar-link:hover {
+  background: #2c3b41;
+  color: white;
+}
+
+.sidebar-link.active {
+  background: #1e282c;
+  color: white;
+}
+
+.sidebar-button {
+  font-family: inherit;
+}
+
+.sidebar-menu-icon {
+  width: 24px;
+
+  margin-right: 0;
+
+  color: #b8c7ce;
+
+  font-size: 15px;
+
+  text-align: left;
+}
+
+.sidebar-text {
+  flex: 1;
+}
+
+.sidebar-chevron {
+  font-size: 17px;
+  color: #b8c7ce;
+}
+
+.parent-open {
+  background: #1e282c;
+  color: white;
+}
+
+/* SUB MENU */
+
+.sidebar-submenu {
+  background: #2c3b41;
+}
+
+.sidebar-sub-link {
+  min-height: 43px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding-left: 20px;
+
+  color: #8fa6b2;
+
+  text-decoration: none;
+
+  font-size: 14px;
+}
+
+.sidebar-sub-link:hover {
+  background: #344950;
+  color: white;
+}
+
+.sidebar-sub-link.active {
+  background: #344950;
+  color: white;
+  font-weight: 500;
+}
+
+/* MAIN */
+
+.magnus-main {
+  min-height: calc(100vh - 62px);
+
+  margin-left: 222px;
+  padding-top: 62px;
+
+  padding-bottom: 55px;
+
+  background: #ecf0f5;
+}
+
+/* FOOTER */
+
+.magnus-footer {
+  position: fixed;
+  z-index: 900;
+
+  left: 222px;
+  right: 0;
+  bottom: 0;
+
+  height: 53px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 15px;
+
+  background: white;
+
+  border-top: 1px solid #d2d6de;
+
+  color: #222;
+
+  font-size: 14px;
+}
+
+.magnus-footer strong {
+  margin-left: 4px;
+  margin-right: 2px;
+
+  color: #337ab7;
+}
+/* =========================================================
+   MORE PAGES
+========================================================= */
+
+.magnus-page {
+  min-height: calc(100vh - 115px);
+
+  padding: 0 15px 30px;
+
+  background: #ecf0f5;
+}
+
+.page-title-row {
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-title-row h1 {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: 400;
+
+  color: #222;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-right: 4px;
+
+  color: #555;
+
+  font-size: 12px;
+}
+
+/* WHITE CARD */
+
+.more-reference-card {
+  width: 100%;
+
+  min-height: 218px;
+
+  background: white;
+
+  border: 1px solid #ddd;
+
+  border-radius: 3px;
+}
+
+/* TABS */
+
+.reference-tabs {
+  height: 43px;
+
+  display: flex;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.reference-tab {
+  min-width: 112px;
+  height: 43px;
+
+  padding: 0 14px;
+
+  border: 0;
+  border-top: 2px solid #3c8dbc;
+
+  background: white;
+
+  color: #337ab7;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.reference-tab + .reference-tab {
+  border-top: 0;
+
+  background: #3c8dbc;
+
+  color: white;
+}
+
+.reference-tab.active {
+  background: white;
+
+  color: #337ab7;
+
+  border-top: 2px solid #3c8dbc;
+}
+
+/* CONTENT */
+
+.reference-tab-content {
+  position: relative;
+
+  padding: 26px 39px;
+
+  min-height: 175px;
+}
+
+.reference-tab-content label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #222;
+
+  font-size: 14px;
+}
+
+.autocomplete-wrapper {
+  position: relative;
+
+  width: 630px;
+}
+
+.autocomplete-wrapper input {
+  width: 100%;
+  height: 34px;
+
+  padding: 6px 10px;
+
+  border: 1px solid #d2d6de;
+
+  outline: none;
+
+  font-size: 14px;
+}
+
+.autocomplete-wrapper input:focus {
+  border-color: #3c8dbc;
+}
+
+.autocomplete-dropdown {
+  position: absolute;
+  z-index: 50;
+
+  top: 34px;
+  left: 0;
+  right: 0;
+
+  background: white;
+
+  border: 1px solid #ccc;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.autocomplete-dropdown button {
+  width: 100%;
+
+  display: block;
+
+  padding: 8px 10px;
+
+  border: 0;
+
+  background: white;
+
+  color: #333;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.autocomplete-dropdown button:hover {
+  background: #f1f1f1;
+}
+/* =========================================================
+   MULTIPLE TABS - MAGNUS REFERENCE
+========================================================= */
+
+.tabs-reference-card {
+  width: calc(100% - 28px);
+
+  margin-left: 14px;
+
+  background: #ffffff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 3px;
+}
+
+/* TAB HEADER */
+
+.tabs-header {
+  height: 47px;
+
+  display: flex;
+  align-items: stretch;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.tabs-button {
+  min-width: 145px;
+
+  height: 47px;
+
+  padding: 0 16px;
+
+  border: 0;
+
+  border-top: 2px solid transparent;
+
+  background: #3c8dbc;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.tabs-button:first-child {
+  min-width: 145px;
+}
+
+.tabs-button.active {
+  background: #ffffff;
+
+  color: #337ab7;
+
+  border-top: 2px solid #3c8dbc;
+}
+
+.tabs-button:hover {
+  opacity: 0.95;
+}
+
+/* CONTENT */
+
+.tabs-content {
+  min-height: 235px;
+
+  padding: 22px 27px;
+
+  color: #222;
+
+  font-size: 15px;
+
+  line-height: 1.45;
+}
+
+.tabs-content p {
+  margin-top: 0;
+
+  margin-bottom: 12px;
+}
+
+.tabs-input-row {
+  display: flex;
+
+  gap: 31px;
+
+  margin-top: 10px;
+}
+
+.tabs-input-row input {
+  width: 407px;
+
+  height: 36px;
+
+  border: 1px solid #d2d6de;
+
+  outline: none;
+
+  padding: 6px 10px;
+
+  background: #ffffff;
+}
+
+.tabs-input-row input:focus {
+  border-color: #3c8dbc;
+}
+/* =========================================================
+   MENU PAGE - MAGNUS REFERENCE
+========================================================= */
+
+.menu-reference-card {
+  width: calc(100% - 28px);
+
+  margin-left: 14px;
+
+  background: #ffffff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 3px;
+
+  min-height: 350px;
+}
+
+/* MENU TABS */
+
+.menu-tabs {
+  height: 47px;
+
+  display: flex;
+
+  align-items: stretch;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.menu-tab {
+  height: 47px;
+
+  min-width: 128px;
+
+  padding: 0 17px;
+
+  border: 0;
+
+  border-top: 2px solid transparent;
+
+  background: #3c8dbc;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.menu-tab.active {
+  background: #ffffff;
+
+  color: #337ab7;
+
+  border-top: 2px solid #3c8dbc;
+}
+
+.menu-tab:hover {
+  opacity: 0.95;
+}
+
+/* CONTENT */
+
+.menu-content {
+  min-height: 300px;
+
+  padding: 26px 27px;
+}
+
+/* SINGLE MENU */
+
+.single-menu-list {
+  width: 385px;
+
+  margin-left: 0;
+}
+
+.single-menu-item {
+  width: 100%;
+
+  height: 45px;
+
+  display: block;
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  background: #3c8dbc;
+
+  color: #ffffff;
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.single-menu-item:hover {
+  background: #367fa9;
+}
+
+.single-menu-item.selected {
+  background: #367fa9;
+
+  font-weight: bold;
+}
+
+/* SUB MENUS */
+
+.sub-menu-list {
+  width: 385px;
+}
+
+.sub-menu-group {
+  width: 100%;
+}
+
+.sub-menu-heading {
+  width: 100%;
+
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  background: #3c8dbc;
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+.sub-menu-heading:hover {
+  background: #367fa9;
+}
+
+.sub-menu-items {
+  background: #f4f4f4;
+
+  border: 1px solid #ddd;
+
+  border-top: 0;
+}
+
+.sub-menu-items button {
+  width: 100%;
+
+  height: 36px;
+
+  display: block;
+
+  padding-left: 20px;
+
+  border: 0;
+
+  border-bottom: 1px solid #ddd;
+
+  background: #ffffff;
+
+  color: #555;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.sub-menu-items button:hover {
+  background: #eeeeee;
+}
+
+/* SELECTION MESSAGE */
+
+.menu-selection-message {
+  width: calc(100% - 28px);
+
+  margin: 12px 0 0 14px;
+
+  padding: 10px 14px;
+
+  background: #ffffff;
+
+  border: 1px solid #ddd;
+
+  color: #333;
+
+  font-size: 14px;
+}
+/* =========================================================
+   COLLAPSIBLE CONTENT
+   MAGNUS / JALA REFERENCE SCREEN
+========================================================= */
+
+.collapsible-page {
+  background: #ecf0f5;
+}
+
+/* PAGE TITLE */
+
+.collapsible-page .page-title-row {
+  height: 68px;
+
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.collapsible-page .page-title-row h1 {
+  margin: 0;
+
+  color: #222;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 24px;
+
+  font-weight: 400;
+
+  line-height: 1.1;
+}
+
+/* BREADCRUMB */
+
+.collapsible-page .breadcrumb {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-right: 5px;
+
+  color: #555;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+.breadcrumb-home-icon {
+  color: #333;
+
+  font-size: 12px;
+}
+
+/* MAIN WHITE CARD */
+
+.collapsible-reference-card {
+  width: calc(100% - 58px);
+
+  margin-left: 29px;
+
+  background: #fff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 3px;
+
+  overflow: hidden;
+}
+
+/* TOP TABS */
+
+.collapse-tabs {
+  height: 48px;
+
+  display: flex;
+
+  align-items: stretch;
+
+  border-bottom: 1px solid #ddd;
+
+  background: #fff;
+}
+
+.collapse-tab {
+  height: 43px;
+
+  padding: 0 15px;
+
+  border: 0;
+
+  border-top: 2px solid transparent;
+
+  background: #3c8dbc;
+
+  color: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+.collapse-tab:first-child {
+  min-width: 125px;
+}
+
+.collapse-tab:nth-child(2) {
+  min-width: 136px;
+}
+
+.collapse-tab.active {
+  background: #fff;
+
+  color: #337ab7;
+
+  border-top: 2px solid #3c8dbc;
+}
+
+.collapse-tab:hover {
+  opacity: 0.95;
+}
+
+/* CONTENT AREA */
+
+.collapse-content-area {
+  min-height: 238px;
+
+  padding: 34px 25px 58px 25px;
+
+  background: #fff;
+}
+
+/* ACCORDION */
+
+.accordion-list {
+  width: 100%;
+}
+
+.accordion-item {
+  width: 100%;
+
+  margin-bottom: 6px;
+}
+
+/* ACCORDION HEADER */
+
+.accordion-header {
+  width: 100%;
+
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 16px 0 15px;
+
+  border: 0;
+
+  background: #3c8dbc;
+
+  color: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.accordion-header:hover {
+  background: #367fa9;
+}
+
+.accordion-title {
+  flex: 1;
+
+  line-height: 45px;
+}
+
+.accordion-icon {
+  width: 20px;
+
+  color: #222;
+
+  font-size: 23px;
+
+  font-weight: bold;
+
+  line-height: 1;
+
+  text-align: right;
+}
+
+/* ACCORDION BODY */
+
+.accordion-body {
+  padding: 15px;
+
+  border: 1px solid #ddd;
+
+  border-top: 0;
+
+  background: #fff;
+
+  color: #333;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+/* =========================================================
+   FINAL MAGNUS LAYOUT FIX
+========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  background: #ecf0f5;
+}
+
+/* MAIN APP */
+
+.magnus-app {
+  width: 100%;
+  min-height: 100vh;
+  background: #ecf0f5;
+}
+
+/* HEADER */
+
+.magnus-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  height: 62px;
+
+  z-index: 1000;
+
+  display: flex;
+
+  background: #3c8dbc;
+}
+
+.magnus-logo {
+  width: 222px;
+  height: 62px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 75px;
+
+  background: #367fa9;
+
+  color: #fff;
+
+  font-size: 21px;
+  font-weight: bold;
+}
+
+/* LOGOUT */
+
+.magnus-header-right {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding-right: 20px;
+}
+
+.logout-button {
+  border: none;
+  background: transparent;
+
+  color: white;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+/* SIDEBAR */
+
+.magnus-sidebar {
+  position: fixed;
+
+  top: 62px;
+  left: 0;
+  bottom: 0;
+
+  width: 222px;
+
+  z-index: 999;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background: #222d32;
+
+  color: #b8c7ce;
+}
+
+/* PROFILE */
+
+.sidebar-profile {
+  width: 222px;
+  height: 77px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 8px 10px;
+
+  background: #222d32;
+}
+
+.sidebar-avatar {
+  position: relative;
+
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  margin-right: 10px;
+
+  overflow: hidden;
+
+  border: 2px solid white;
+  border-radius: 50%;
+
+  background: #eeeeee;
+}
+
+.avatar-head {
+  position: absolute;
+
+  top: 7px;
+  left: 14px;
+
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%;
+
+  background: white;
+}
+
+.avatar-body {
+  position: absolute;
+
+  left: 7px;
+  bottom: -1px;
+
+  width: 30px;
+  height: 25px;
+
+  border-radius: 50% 50% 0 0;
+
+  background: white;
+}
+
+.sidebar-user-name {
+  color: white;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  margin-bottom: 6px;
+}
+
+.sidebar-user-role {
+  color: white;
+
+  font-size: 13px;
+}
+
+/* SIDEBAR LINKS */
+
+.sidebar-link {
+  width: 222px;
+  min-height: 43px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 16px;
+
+  border: none;
+
+  background: #222d32;
+
+  color: #b8c7ce;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+.sidebar-link:hover {
+  background: #2c3b41;
+  color: white;
+}
+
+.sidebar-link.active {
+  background: #1e282c;
+  color: white;
+}
+
+.sidebar-menu-icon {
+  width: 24px;
+
+  flex-shrink: 0;
+
+  color: #b8c7ce;
+}
+
+.sidebar-text {
+  flex: 1;
+}
+
+.sidebar-chevron {
+  color: #b8c7ce;
+}
+
+/* SUBMENU */
+
+.sidebar-submenu {
+  width: 222px;
+
+  background: #2c3b41;
+}
+
+.sidebar-sub-link {
+  width: 222px;
+  min-height: 43px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding-left: 20px;
+
+  color: #8fa6b2;
+
+  font-size: 14px;
+
+  text-decoration: none;
+}
+
+.sidebar-sub-link:hover {
+  background: #344950;
+  color: white;
+}
+
+.sidebar-sub-link.active {
+  background: #344950;
+  color: white;
+}
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.magnus-main {
+  min-height: calc(100vh - 62px);
+
+  margin-left: 222px;
+
+  padding-top: 62px;
+  padding-bottom: 53px;
+
+  background: #ecf0f5;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.magnus-footer {
+  position: fixed;
+
+  left: 222px;
+  right: 0;
+  bottom: 0;
+
+  height: 53px;
+
+  z-index: 900;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 15px;
+
+  background: white;
+
+  border-top: 1px solid #d2d6de;
+
+  color: #222;
+
+  font-size: 14px;
+}
+
+.magnus-footer strong {
+  margin-left: 4px;
+  margin-right: 2px;
+
+  color: #337ab7;
+}
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.magnus-page {
+  width: 100%;
+  min-height: calc(100vh - 115px);
+
+  background: #ecf0f5;
+}
+
+.page-title-row {
+  width: 100%;
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 15px;
+}
+
+.page-title-row h1 {
+  margin: 0;
+
+  color: #222;
+
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  color: #555;
+
+  font-size: 12px;
+}
+/* =========================================================
+   MAGNUS - IMAGES PAGE
+========================================================= */
+
+.images-page {
+  min-height: calc(100vh - 115px);
+  background: #ecf0f5;
+}
+
+/* PAGE HEADER */
+
+.magnus-page-header {
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.page-heading {
+  color: #222;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.magnus-breadcrumb {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-right: 3px;
+
+  color: #555;
+
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.breadcrumb-arrow {
+  color: #aaa;
+}
+
+/* CONTENT */
+
+.images-content {
+  padding: 0 43px 80px 43px;
+  box-sizing: border-box;
+}
+
+/* UPLOAD AREA */
+
+.image-upload-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(430px, 1fr)
+    minmax(430px, 1fr)
+    auto;
+
+  column-gap: 28px;
+
+  align-items: end;
+}
+
+.image-upload-field,
+.image-name-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-upload-field label,
+.image-name-field label {
+  margin-bottom: 8px;
+
+  color: #222;
+
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.file-input-wrapper {
+  height: 33px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+.file-input-wrapper input[type="file"] {
+  width: 100%;
+  height: 33px;
+
+  box-sizing: border-box;
+
+  padding: 3px;
+
+  border: 1px solid #d2d6de;
+
+  background: white;
+
+  color: #555;
+
+  font-size: 14px;
+}
+
+.image-name-field input {
+  width: 100%;
+  height: 33px;
+
+  box-sizing: border-box;
+
+  padding: 6px 10px;
+
+  border: 1px solid #d2d6de;
+
+  outline: none;
+
+  background: white;
+
+  color: #222;
+
+  font-size: 14px;
+}
+
+.image-name-field input::placeholder {
+  color: #999;
+}
+
+.image-name-field input:focus {
+  border-color: #3c8dbc;
+}
+
+.image-upload-button {
+  height: 34px;
+
+  min-width: 67px;
+
+  padding: 0 15px;
+
+  border: 1px solid #008d4c;
+  border-radius: 3px;
+
+  background: #00a65a;
+
+  color: white;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.image-upload-button:hover {
+  background: #008d4c;
+}
+
+/* LIST TITLE */
+
+.image-list-title {
+  margin: 43px 0 27px 0;
+
+  color: #222;
+
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* IMAGE LIST */
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: flex-start;
+
+  gap: 20px;
+}
+
+/* IMAGE CARD */
+
+.image-card {
+  width: 315px;
+  height: 226px;
+
+  box-sizing: border-box;
+
+  background: white;
+
+  border: 1px solid #e2e2e2;
+  border-top: 3px solid #00a65a;
+
+  border-radius: 3px;
+
+  overflow: hidden;
+
+  box-shadow: none;
+}
+
+/* CARD HEADER */
+
+.image-card-header {
+  height: 39px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 10px;
+
+  box-sizing: border-box;
+
+  border-bottom: 1px solid #eeeeee;
+
+  background: white;
+
+  color: #222;
+
+  font-size: 13px;
+}
+
+.image-card-header span {
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* DELETE */
+
+.image-delete-button {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: red;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 31px;
+  font-weight: bold;
+
+  line-height: 20px;
+
+  cursor: pointer;
+}
+
+.image-delete-button:hover {
+  color: #cc0000;
+}
+
+/* IMAGE PREVIEW */
+
+.image-preview {
+  height: 184px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+
+  overflow: hidden;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+}
+
+/* REFERENCE IMAGE PLACEHOLDER */
+
+.broken-image-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  color: #337ab7;
+
+  font-size: 14px;
+}
+
+.broken-image-icon {
+  font-size: 18px;
+
+  color: #777;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .image-upload-row {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 18px;
+  }
+
+  .image-upload-button {
+    width: 80px;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .images-content {
+    padding: 0 20px 80px 20px;
+  }
+
+  .image-upload-row {
+    grid-template-columns: 1fr;
+  }
+
+  .image-upload-button {
+    width: 80px;
+  }
+
+  .image-card {
+    width: 315px;
+  }
+
+}
+/* =========================================================
+   IMAGES PAGE - MAGNUS REFERENCE MATCH
+========================================================= */
+
+.images-page {
+  width: 100%;
+  min-height: calc(100vh - 115px);
+
+  margin: 0;
+  padding: 0;
+
+  background: #ecf0f5;
+
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------
+   TITLE + BREADCRUMB
+--------------------------------------------------------- */
+
+.images-page-header {
+  width: 100%;
+  height: 68px;
+
+  padding: 0 15px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.images-page-header h1 {
+  margin: 0;
+
+  color: #222;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 24px;
+  font-weight: 400;
+
+  line-height: 1.1;
+}
+
+.images-breadcrumb {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-right: 3px;
+
+  color: #555;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+.breadcrumb-home {
+  font-size: 11px;
+}
+
+.breadcrumb-separator {
+  color: #aaa;
+}
+
+/* ---------------------------------------------------------
+   CONTENT
+--------------------------------------------------------- */
+
+.images-page-content {
+  width: 100%;
+
+  padding: 0 43px 80px 43px;
+
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------
+   UPLOAD ROW
+--------------------------------------------------------- */
+
+.images-upload-row {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(400px, 1fr)
+    minmax(400px, 1fr)
+    67px;
+
+  column-gap: 28px;
+
+  align-items: end;
+}
+
+/* ---------------------------------------------------------
+   FIELD GROUPS
+--------------------------------------------------------- */
+
+.images-file-group,
+.images-name-group {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.images-file-group label,
+.images-name-group label {
+  margin: 0 0 8px 0;
+
+  color: #222;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* ---------------------------------------------------------
+   FILE INPUT
+--------------------------------------------------------- */
+
+.images-file-group input[type="file"] {
+  width: 100%;
+  height: 33px;
+
+  box-sizing: border-box;
+
+  padding: 3px 4px;
+
+  border: 1px solid #d2d6de;
+
+  background: #fff;
+
+  color: #555;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------
+   FILE NAME
+--------------------------------------------------------- */
+
+.images-name-group input {
+  width: 100%;
+  height: 33px;
+
+  box-sizing: border-box;
+
+  padding: 6px 10px;
+
+  border: 1px solid #d2d6de;
+
+  outline: none;
+
+  background: #fff;
+
+  color: #222;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+}
+
+.images-name-group input::placeholder {
+  color: #999;
+}
+
+.images-name-group input:focus {
+  border-color: #3c8dbc;
+}
+
+/* ---------------------------------------------------------
+   UPLOAD BUTTON
+--------------------------------------------------------- */
+
+.images-upload-button {
+  width: 67px;
+  height: 34px;
+
+  box-sizing: border-box;
+
+  padding: 0;
+
+  border: 1px solid #008d4c;
+
+  border-radius: 3px;
+
+  background: #00a65a;
+
+  color: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  cursor: pointer;
+}
+
+.images-upload-button:hover {
+  background: #008d4c;
+}
+
+/* ---------------------------------------------------------
+   LIST TITLE
+--------------------------------------------------------- */
+
+.images-list-heading {
+  margin: 43px 0 27px 0;
+
+  color: #222;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* ---------------------------------------------------------
+   IMAGE LIST
+--------------------------------------------------------- */
+
+.images-list {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: flex-start;
+
+  gap: 20px;
+}
+
+/* ---------------------------------------------------------
+   IMAGE CARD
+--------------------------------------------------------- */
+
+.images-card {
+  width: 315px;
+  height: 226px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border: 1px solid #e1e1e1;
+
+  border-top: 3px solid #00a65a;
+
+  border-radius: 3px;
+
+  background: #fff;
+}
+
+/* ---------------------------------------------------------
+   CARD HEADER
+--------------------------------------------------------- */
+
+.images-card-header {
+  width: 100%;
+  height: 39px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 9px;
+
+  border-bottom: 1px solid #eeeeee;
+
+  background: #fff;
+}
+
+.images-card-name {
+  max-width: 270px;
+
+  overflow: hidden;
+
+  color: #222;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+/* ---------------------------------------------------------
+   DELETE X
+--------------------------------------------------------- */
+
+.images-delete {
+  width: 25px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: red;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 30px;
+  font-weight: bold;
+
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.images-delete:hover {
+  color: #cc0000;
+}
+
+/* ---------------------------------------------------------
+   CARD BODY
+--------------------------------------------------------- */
+
+.images-card-body {
+  width: 100%;
+  height: 184px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fff;
+
+  overflow: hidden;
+}
+
+.images-card-body img {
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+}
+
+/* ---------------------------------------------------------
+   REFERENCE BROKEN IMAGE
+--------------------------------------------------------- */
+
+.reference-image {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+}
+
+.broken-image {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #999;
+
+  font-size: 17px;
+}
+
+.reference-image a {
+  color: #337ab7;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  text-decoration: none;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+--------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+
+  .images-upload-row {
+    grid-template-columns:
+      minmax(300px, 1fr)
+      minmax(300px, 1fr)
+      67px;
+  }
+
+}
+
+@media (max-width: 800px) {
+
+  .images-page-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .images-upload-row {
+    grid-template-columns: 1fr;
+    row-gap: 18px;
+  }
+
+  .images-upload-button {
+    width: 67px;
+  }
+
+}
+/* =========================================================
+   FINAL IMAGES PAGE POSITION FIX
+========================================================= */
+
+.magnus-main {
+  margin-left: 222px !important;
+  padding-top: 62px !important;
+  padding-bottom: 53px !important;
+  width: calc(100% - 222px) !important;
+  box-sizing: border-box !important;
+}
+
+.images-page {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
+}
+
+.images-page-header {
+  width: 100% !important;
+  height: 68px !important;
+  margin: 0 !important;
+  padding: 0 15px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  box-sizing: border-box !important;
+}
+
+.images-page-content {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 43px 80px 43px !important;
+
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+.images-upload-row {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.images-list-heading {
+  margin-left: 0 !important;
+}
+
+.images-list {
+  margin-left: 0 !important;
+}
+/* =========================================================
+   JALA MAGNUS - SLIDER PAGE
+========================================================= */
+
+.slider-page {
+  width: 100%;
+  min-height: calc(100vh - 115px);
+  margin: 0;
+  padding: 0;
+  background: #ecf0f5;
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------
+   PAGE HEADER
+--------------------------------------------------------- */
+
+.slider-page-header {
+  width: 100%;
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 15px;
+
+  box-sizing: border-box;
+}
+
+.slider-page-header h1 {
+  margin: 0;
+
+  color: #222;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+
+  line-height: 1.1;
+}
+
+.slider-breadcrumb {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-right: 3px;
+
+  color: #555;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+.slider-breadcrumb-arrow {
+  color: #aaa;
+}
+
+/* ---------------------------------------------------------
+   WHITE SLIDER CARD
+--------------------------------------------------------- */
+
+.slider-reference-card {
+  width: calc(100% - 58px);
+
+  margin-left: 29px;
+
+  min-height: 218px;
+
+  background: #fff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 3px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------
+   TAB HEADER
+--------------------------------------------------------- */
+
+.slider-tab-header {
+  width: 100%;
+  height: 43px;
+
+  display: flex;
+  align-items: stretch;
+
+  border-bottom: 1px solid #ddd;
+
+  background: #fff;
+}
+
+.slider-tab {
+  width: 65px;
+  height: 43px;
+
+  padding: 0 14px;
+
+  border: 0;
+  border-top: 2px solid #3c8dbc;
+
+  background: #fff;
+
+  color: #337ab7;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------
+   SLIDER CONTENT
+--------------------------------------------------------- */
+
+.slider-content {
+  width: 100%;
+
+  min-height: 174px;
+
+  padding: 28px 39px;
+
+  box-sizing: border-box;
+
+  background: #fff;
+}
+
+/* ---------------------------------------------------------
+   SLIDER CONTROL
+--------------------------------------------------------- */
+
+.slider-control-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  padding-top: 1px;
+}
+
+/* ---------------------------------------------------------
+   RANGE SLIDER
+--------------------------------------------------------- */
+
+.magnus-slider {
+  width: 100%;
+
+  height: 20px;
+
+  margin: 0;
+
+  padding: 0;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: transparent;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+/* TRACK */
+
+.magnus-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+
+  border-radius: 6px;
+
+  background:
+    linear-gradient(
+      to right,
+      #3c8dbc 0%,
+      #3c8dbc var(--slider-progress, 26%),
+      #eeeeee var(--slider-progress, 26%),
+      #eeeeee 100%
+    );
+
+  border: 1px solid #ddd;
+}
+
+.magnus-slider::-moz-range-track {
+  width: 100%;
+  height: 10px;
+
+  border-radius: 6px;
+
+  background: #eeeeee;
+
+  border: 1px solid #ddd;
+}
+
+/* THUMB */
+
+.magnus-slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 21px;
+  height: 21px;
+
+  margin-top: -6px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #444;
+
+  cursor: pointer;
+}
+
+.magnus-slider::-moz-range-thumb {
+  width: 21px;
+  height: 21px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #444;
+
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------
+   VALUE TOOLTIP
+--------------------------------------------------------- */
+
+.slider-value-tooltip {
+  position: absolute;
+
+  top: -34px;
+
+  
+
+  min-width: 28px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 5px;
+
+  box-sizing: border-box;
+
+  border-radius: 4px;
+
+  background: #222;
+
+  color: white;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  z-index: 5;
+}
+
+.slider-value-tooltip::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -5px;
+
+  transform: translateX(-50%);
+
+  width: 0;
+  height: 0;
+
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #222;
+}
+
+/* ---------------------------------------------------------
+   CURRENT VALUE
+--------------------------------------------------------- */
+
+.current-slider-value {
+  margin-top: 24px;
+
+  color: #222;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+--------------------------------------------------------- */
+
+@media (max-width: 800px) {
+  .slider-reference-card {
+    width: calc(100% - 30px);
+    margin-left: 15px;
+  }
+
+  .slider-content {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+/* =========================================================
+   JALA SLIDER PAGE
+   Content only - MagnusLayout handles header/sidebar/footer
+========================================================= */
+
+.jala-slider-page {
+  width: 100%;
+  min-height: calc(100vh - 110px);
+  box-sizing: border-box;
+  background: #ecf0f5;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.jala-page-heading {
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 15px;
+
+  box-sizing: border-box;
+}
+
+.jala-page-heading h1 {
+  margin: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 24px;
+  font-weight: 400;
+
+  color: #222222;
+}
+
+.jala-breadcrumb {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  color: #555555;
+
+  margin-right: 2px;
+}
+
+
+/* =========================================================
+   MAIN WHITE CARD
+========================================================= */
+
+.jala-slider-card {
+  position: relative;
+
+  width: calc(100% - 58px);
+
+  min-height: 218px;
+
+  margin-left: 29px;
+
+  margin-right: 29px;
+
+  background: #ffffff;
+
+  border: 1px solid #dddddd;
+
+  border-radius: 3px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TAB
+========================================================= */
+
+.jala-slider-tab {
+  width: 65px;
+
+  height: 43px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border-top: 2px solid #3c8dbc;
+
+  border-right: 1px solid #dddddd;
+
+  color: #337ab7;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.jala-slider-content {
+  min-height: 174px;
+
+  padding: 29px 39px;
+
+  box-sizing: border-box;
+
+  border-top: 1px solid #dddddd;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   SLIDER WRAPPER
+========================================================= */
+
+.jala-slider-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  padding-top: 1px;
+}
+
+
+/* =========================================================
+   RANGE SLIDER
+========================================================= */
+
+.jala-slider-range {
+  width: 100%;
+
+  height: 10px;
+
+  display: block;
+
+  margin: 0;
+
+  padding: 0;
+
+  border: 1px solid #dddddd;
+
+  border-radius: 6px;
+
+  outline: none;
+
+  appearance: none;
+
+  -webkit-appearance: none;
+
+  box-sizing: border-box;
+
+  cursor: pointer;
+}
+
+
+/* Chrome / Edge */
+
+.jala-slider-range::-webkit-slider-runnable-track {
+  width: 100%;
+
+  height: 10px;
+
+  border: 0;
+
+  border-radius: 6px;
+
+  background: transparent;
+}
+
+.jala-slider-range::-webkit-slider-thumb {
+  width: 21px;
+
+  height: 21px;
+
+  margin-top: -6px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #444444;
+
+  appearance: none;
+
+  -webkit-appearance: none;
+
+  cursor: pointer;
+}
+
+
+/* Firefox */
+
+.jala-slider-range::-moz-range-track {
+  width: 100%;
+
+  height: 10px;
+
+  border: 0;
+
+  border-radius: 6px;
+
+  background: transparent;
+}
+
+.jala-slider-range::-moz-range-thumb {
+  width: 21px;
+
+  height: 21px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #444444;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   VALUE TOOLTIP
+========================================================= */
+
+.jala-slider-value-tooltip {
+  position: absolute;
+
+  top: -35px;
+
+  min-width: 28px;
+
+  height: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0 5px;
+
+  box-sizing: border-box;
+
+  background: #222222;
+
+  color: #ffffff;
+
+  border-radius: 4px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  z-index: 5;
+}
+
+.jala-slider-value-tooltip::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -5px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 0;
+
+  height: 0;
+
+  border-left: 5px solid transparent;
+
+  border-right: 5px solid transparent;
+
+  border-top: 5px solid #222222;
+}
+
+
+/* =========================================================
+   CURRENT VALUE
+========================================================= */
+
+.jala-current-slider-value {
+  margin-top: 24px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  color: #222222;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .jala-page-heading {
+    padding: 0 15px;
+  }
+
+  .jala-slider-card {
+    width: calc(100% - 30px);
+
+    margin-left: 15px;
+
+    margin-right: 15px;
+  }
+
+  .jala-slider-content {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+/* =========================================================
+   JALA TOOLTIP PAGE
+========================================================= */
+
+.jala-tooltip-page {
+  width: 100%;
+  min-height: calc(100vh - 110px);
+  margin: 0;
+  padding: 0;
+  background: #ecf0f5;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.jala-tooltip-page .jala-page-heading {
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 15px;
+
+  box-sizing: border-box;
+}
+
+.jala-tooltip-page .jala-page-heading h1 {
+  margin: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 24px;
+  font-weight: 400;
+
+  color: #222222;
+}
+
+.jala-tooltip-page .jala-breadcrumb {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-right: 2px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  color: #555555;
+}
+
+
+/* =========================================================
+   WHITE PANEL
+========================================================= */
+
+.jala-tooltip-card {
+  width: calc(100% - 58px);
+
+  min-height: 218px;
+
+  margin-left: 29px;
+  margin-right: 29px;
+
+  background: #ffffff;
+
+  border: 1px solid #dddddd;
+
+  border-radius: 3px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TOOLTIP TAB
+========================================================= */
+
+.jala-tooltip-tab {
+  width: 77px;
+
+  height: 43px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border-top: 2px solid #3c8dbc;
+
+  border-right: 1px solid #dddddd;
+
+  color: #337ab7;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   CONTENT AREA
+========================================================= */
+
+.jala-tooltip-content {
+  height: 174px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  padding-top: 42px;
+
+  box-sizing: border-box;
+
+  border-top: 1px solid #dddddd;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   BUTTON WRAPPER
+========================================================= */
+
+.tooltip-button-wrapper {
+  position: relative;
+
+  display: inline-flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   BLUE BUTTON
+========================================================= */
+
+.jala-tooltip-button {
+  min-width: 236px;
+
+  height: 33px;
+
+  padding: 6px 12px;
+
+  border: 1px solid #2f6f9f;
+
+  border-radius: 0;
+
+  outline: none;
+
+  background: #3c8dbc;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  line-height: 20px;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+}
+
+.jala-tooltip-button:hover {
+  background: #367fa9;
+}
+
+
+/* =========================================================
+   TOOLTIP MESSAGE
+========================================================= */
+
+.jala-tooltip-message {
+  position: absolute;
+
+  top: 40px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  white-space: nowrap;
+
+  padding: 5px 9px;
+
+  background: #222222;
+
+  color: #ffffff;
+
+  border-radius: 4px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  line-height: 17px;
+
+  z-index: 20;
+}
+
+
+/* Small tooltip arrow */
+
+.jala-tooltip-message::before {
+  content: "";
+
+  position: absolute;
+
+  top: -5px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 0;
+  height: 0;
+
+  border-left: 5px solid transparent;
+
+  border-right: 5px solid transparent;
+
+  border-bottom: 5px solid #222222;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .jala-tooltip-page .jala-page-heading {
+    padding: 0 15px;
+  }
+
+  .jala-tooltip-card {
+    width: calc(100% - 30px);
+
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+}
+/* =========================================================
+   JALA POPUP PAGE
+========================================================= */
+
+.jala-popup-page {
+  width: 100%;
+  min-height: calc(100vh - 110px);
+  background: #ecf0f5;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.jala-popup-heading {
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 15px;
+
+  box-sizing: border-box;
+}
+
+.jala-popup-heading h1 {
+  margin: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 24px;
+  font-weight: 400;
+
+  color: #222222;
+}
+
+.jala-popup-breadcrumb {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  color: #555555;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.jala-popup-card {
+  width: 70%;
+
+  min-height: 278px;
+
+  margin-left: 29px;
+
+  background: #ffffff;
+
+  border: 1px solid #dddddd;
+
+  border-radius: 3px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TAB
+========================================================= */
+
+.jala-popup-tab {
+  width: 77px;
+
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  border-top: 2px solid #3c8dbc;
+
+  border-right: 1px solid #dddddd;
+
+  color: #337ab7;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.jala-popup-content {
+  min-height: 234px;
+
+  border-top: 1px solid #dddddd;
+
+  background: #ffffff;
+
+  padding: 42px 72px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BUTTON GRID
+========================================================= */
+
+.popup-button-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    1fr;
+
+  column-gap: 128px;
+
+  row-gap: 19px;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   POPUP BUTTON
+========================================================= */
+
+.jala-popup-button {
+  width: 170px;
+
+  height: 33px;
+
+  margin: 0 auto;
+
+  border: 1px solid #337aa5;
+
+  border-radius: 0;
+
+  background: #3c8dbc;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.jala-popup-button:hover {
+  background: #367fa9;
+
+  border-color: #2e6da4;
+}
+
+.jala-popup-button:active {
+  transform: translateY(1px);
+}
+
+
+/* =========================================================
+   IN WINDOW POPUP OVERLAY
+========================================================= */
+
+.jala-popup-overlay {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+
+/* =========================================================
+   IN WINDOW POPUP
+========================================================= */
+
+.jala-in-window-popup {
+  width: 500px;
+
+  background: #ffffff;
+
+  border-radius: 3px;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.3);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   POPUP HEADER
+========================================================= */
+
+.jala-in-window-header {
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 16px;
+
+  background: #3c8dbc;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+.jala-popup-close {
+  border: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 27px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  padding: 0;
+}
+
+
+/* =========================================================
+   POPUP BODY
+========================================================= */
+
+.jala-in-window-body {
+  padding: 30px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #222222;
+}
+
+.jala-in-window-body h3 {
+  margin: 0 0 15px;
+
+  font-size: 20px;
+
+  font-weight: 400;
+}
+
+.jala-in-window-body p {
+  margin: 0 0 25px;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   OK / CLOSE BUTTON
+========================================================= */
+
+.jala-popup-ok {
+  padding: 7px 20px;
+
+  border: 1px solid #337ab7;
+
+  border-radius: 0;
+
+  background: #3c8dbc;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  font-size: 14px;
+}
+
+.jala-popup-ok:hover {
+  background: #367fa9;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .jala-popup-card {
+    width: calc(100% - 58px);
+  }
+
+  .popup-button-grid {
+    column-gap: 50px;
+  }
+
+}
+
+@media (max-width: 750px) {
+
+  .jala-popup-card {
+    width: calc(100% - 30px);
+
+    margin-left: 15px;
+  }
+
+  .jala-popup-content {
+    padding: 35px 20px;
+  }
+
+  .popup-button-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .jala-popup-heading {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    gap: 5px;
+  }
+
+  .jala-in-window-popup {
+    width: calc(100% - 30px);
+  }
+
+}
+/* =========================================================
+   JALA MAGNUS - POPUP PAGE
+   ========================================================= */
+
+.popup-page {
+  width: 100%;
+  min-height: calc(100vh - 110px);
+
+  background: #ecf0f5;
+
+  box-sizing: border-box;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.popup-page-header {
+  height: 74px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 15px;
+
+  box-sizing: border-box;
+}
+
+
+.popup-page-title {
+  margin: 0;
+
+  font-size: 24px;
+
+  line-height: 1.1;
+
+  font-weight: 400;
+
+  color: #222222;
+}
+
+
+.popup-breadcrumb {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 1px;
+
+  font-size: 12px;
+
+  color: #555555;
+
+  white-space: nowrap;
+}
+
+
+.breadcrumb-home-icon {
+  font-size: 11px;
+
+  color: #555555;
+}
+
+
+.breadcrumb-arrow {
+  color: #999999;
+}
+
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.popup-card {
+  width: 70%;
+
+  min-height: 278px;
+
+  margin-left: 29px;
+
+  background: #ffffff;
+
+  border: 1px solid #dddddd;
+
+  border-radius: 3px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TAB
+   ========================================================= */
+
+.popup-tab {
+  width: 77px;
+
+  height: 43px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-top: 2px solid #3c8dbc;
+
+  border-right: 1px solid #dddddd;
+
+  background: #ffffff;
+
+  color: #337ab7;
+
+  font-size: 14px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARD BODY
+   ========================================================= */
+
+.popup-card-body {
+  min-height: 234px;
+
+  border-top: 1px solid #dddddd;
+
+  padding: 42px 72px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BUTTON GRID
+   ========================================================= */
+
+.popup-buttons {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  column-gap: 128px;
+
+  row-gap: 19px;
+
+  align-items: center;
+
+  justify-items: center;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.popup-action-button {
+  width: 170px;
+
+  height: 33px;
+
+  padding: 0;
+
+  border: 1px solid #337aa5;
+
+  border-radius: 0;
+
+  background: #3c8dbc;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  outline: none;
+
+  box-sizing: border-box;
+}
+
+
+.popup-action-button:hover {
+  background: #367fa9;
+
+  border-color: #2e6da4;
+}
+
+
+.popup-action-button:focus {
+  outline: none;
+}
+
+
+.popup-action-button:active {
+  background: #337ab7;
+}
+
+
+/* =========================================================
+   IN-WINDOW POPUP OVERLAY
+   ========================================================= */
+
+.popup-modal-overlay {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  padding-top: 123px;
+
+  background: rgba(0, 0, 0, 0.65);
+
+  z-index: 99999;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.popup-modal {
+  width: 580px;
+
+  min-height: 203px;
+
+  background: #ffffff;
+
+  border: 1px solid #dddddd;
+
+  border-radius: 0;
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.25);
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MODAL HEADER
+   ========================================================= */
+
+.popup-modal-header {
+  height: 54px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 15px;
+
+  border-bottom: 1px solid #eeeeee;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+.popup-modal-title {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 400;
+
+  color: #444444;
+}
+
+
+.popup-modal-x {
+  width: 25px;
+
+  height: 25px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #cccccc;
+
+  font-size: 24px;
+
+  line-height: 20px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  text-align: center;
+}
+
+
+.popup-modal-x:hover {
+  color: #999999;
+}
+
+
+/* =========================================================
+   MODAL BODY
+   ========================================================= */
+
+.popup-modal-body {
+  padding: 16px 15px 12px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+.popup-body-heading {
+  margin: 0 0 3px;
+
+  color: #444444;
+
+  font-size: 14px;
+
+  line-height: 20px;
+}
+
+
+.popup-body-text {
+  margin: 0;
+
+  color: #444444;
+
+  font-size: 14px;
+
+  line-height: 19px;
+}
+
+
+/* =========================================================
+   MODAL FOOTER
+   ========================================================= */
+
+.popup-modal-footer {
+  min-height: 68px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  padding: 12px 15px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+.popup-close-button {
+  min-width: 60px;
+
+  height: 34px;
+
+  padding: 0 14px;
+
+  border: 1px solid #d73925;
+
+  border-radius: 3px;
+
+  background: #dd4b39;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+
+.popup-close-button:hover {
+  background: #c9302c;
+
+  border-color: #ac2925;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  .popup-card {
+    width: calc(100% - 58px);
+  }
+
+  .popup-buttons {
+    column-gap: 50px;
+  }
+
+}
+
+
+@media (max-width: 850px) {
+
+  .popup-page-header {
+    height: auto;
+
+    min-height: 74px;
+
+    padding: 15px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    gap: 8px;
+  }
+
+
+  .popup-card {
+    width: calc(100% - 30px);
+
+    margin-left: 15px;
+  }
+
+
+  .popup-card-body {
+    padding: 35px 20px;
+  }
+
+
+  .popup-buttons {
+    grid-template-columns: 1fr;
+
+    column-gap: 0;
+
+    row-gap: 15px;
+  }
+
+
+  .popup-modal {
+    width: calc(100% - 30px);
+  }
+
 }

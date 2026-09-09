@@ -1,0 +1,265 @@
+/* =========================================
+   Magnus Admin Login
+   ========================================= */
+
+.admin-login-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #d2d6de;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+.admin-login-container {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 39px;
+  box-sizing: border-box;
+}
+
+/* Magnus */
+
+.admin-login-logo {
+  margin: 0 0 30px 0;
+
+  color: #374151;
+
+  font-size: 36px;
+  line-height: 1;
+
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* =========================================
+   Card
+   ========================================= */
+
+.admin-login-card {
+  width: 348px;
+  min-height: 219px;
+
+  background: #ffffff;
+
+  padding: 19px;
+
+  box-sizing: border-box;
+}
+
+/* Title */
+
+.admin-login-title {
+  text-align: center;
+
+  color: #555555;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  margin-bottom: 35px;
+}
+
+/* =========================================
+   Inputs
+   ========================================= */
+
+.admin-login-input-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  margin-bottom: 14px;
+}
+
+.admin-login-input {
+  width: 100%;
+  height: 34px;
+
+  box-sizing: border-box;
+
+  padding: 7px 38px 7px 11px;
+
+  border: 1px solid #d3dce6;
+
+  background: #e8f0fb;
+
+  color: #111111;
+
+  font-size: 14px;
+
+  outline: none;
+}
+
+.admin-login-input:focus {
+  border-color: #3c8dbc;
+  background: #ffffff;
+}
+
+/* Email icon */
+
+.admin-login-email-icon {
+  position: absolute;
+
+  right: 9px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #777777;
+
+  font-size: 16px;
+
+  pointer-events: none;
+}
+
+/* Lock icon */
+
+.admin-login-lock-icon {
+  position: absolute;
+
+  right: 9px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #777777;
+
+  font-size: 14px;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   Error
+   ========================================= */
+
+.admin-login-error {
+  margin-top: -5px;
+  margin-bottom: 8px;
+
+  color: #d9534f;
+
+  font-size: 12px;
+}
+
+/* =========================================
+   Actions
+   ========================================= */
+
+.admin-login-actions {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 1px;
+}
+
+/* Back */
+
+.admin-login-back {
+  border: none;
+  background: transparent;
+
+  padding: 0;
+
+  color: #337ab7;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.admin-login-back:hover {
+  color: #23527c;
+  text-decoration: underline;
+}
+
+/* Sign In */
+
+.admin-login-submit {
+  height: 34px;
+
+  padding: 0 14px;
+
+  background: #337ab7;
+
+  border: 1px solid #286090;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.admin-login-submit:hover {
+  background: #286090;
+  border-color: #204d74;
+}
+
+.admin-login-submit:active {
+  background: #204d74;
+}
+
+/* =========================================
+   Announcement
+   ========================================= */
+
+.admin-login-announcement {
+  width: calc(100% - 40px);
+
+  margin-top: 32px;
+
+  padding: 19px 15px;
+
+  box-sizing: border-box;
+
+  background: #3c91bd;
+
+  border: 1px solid #3c91bd;
+
+  border-radius: 3px;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  line-height: 20px;
+}
+
+.admin-login-announcement span {
+  color: #ffffff;
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+
+@media (max-width: 600px) {
+  .admin-login-container {
+    padding-top: 30px;
+  }
+
+  .admin-login-logo {
+    font-size: 32px;
+    margin-bottom: 25px;
+  }
+
+  .admin-login-card {
+    width: calc(100% - 30px);
+    max-width: 348px;
+  }
+
+  .admin-login-announcement {
+    width: calc(100% - 30px);
+    margin-top: 25px;
+  }
+}

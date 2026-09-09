@@ -1,0 +1,700 @@
+.employee-search-page {
+  padding: 0 15px 35px;
+  background: #ecf0f5;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.search-page-heading {
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-title-area {
+  display: flex;
+  align-items: baseline;
+}
+
+.search-page-title {
+  margin: 0;
+
+  font-size: 27px;
+  font-weight: 400;
+
+  color: #222;
+}
+
+.search-page-subtitle {
+  margin-left: 14px;
+
+  font-size: 16px;
+  color: #777;
+}
+
+.search-breadcrumb {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding-right: 5px;
+
+  color: #444;
+
+  font-size: 13px;
+}
+
+.breadcrumb-arrow {
+  color: #aaa;
+}
+
+
+/* =========================================================
+   MAIN PANEL
+========================================================= */
+
+.search-reference-panel {
+  width: 100%;
+
+  background: #fff;
+
+  border: 1px solid #e4e4e4;
+  border-top: 3px solid #00a8d6;
+
+  border-radius: 2px;
+
+  min-height: 600px;
+}
+
+
+/* =========================================================
+   PANEL HEADER
+========================================================= */
+
+.reference-panel-header {
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 10px 0 12px;
+
+  border-bottom: 1px solid #eee;
+}
+
+.reference-panel-title {
+  margin: 0;
+
+  color: #222;
+
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.reference-add-button {
+  height: 31px;
+
+  padding: 0 14px;
+
+  border: 0;
+  border-radius: 3px;
+
+  background: #00c0ef;
+
+  color: white;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.reference-add-button:hover {
+  background: #00acd6;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.reference-search-form {
+  display: grid;
+
+  grid-template-columns:
+    minmax(300px, 425px)
+    minmax(300px, 425px)
+    auto;
+
+  column-gap: 28px;
+
+  align-items: end;
+
+  padding: 18px 27px 40px;
+}
+
+.reference-search-field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #222;
+
+  font-size: 14px;
+}
+
+.reference-search-field input {
+  width: 100%;
+  height: 34px;
+
+  padding: 6px 12px;
+
+  border: 1px solid #d6dce1;
+  border-radius: 0;
+
+  outline: none;
+
+  background: white;
+
+  color: #333;
+
+  font-size: 14px;
+}
+
+.reference-search-field input::placeholder {
+  color: #999;
+}
+
+.reference-search-field input:focus {
+  border-color: #3c8dbc;
+}
+
+
+/* =========================================================
+   SEARCH BUTTONS
+========================================================= */
+
+.reference-search-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.reference-search-button,
+.reference-clear-button {
+  height: 37px;
+
+  padding: 0 15px;
+
+  border: 0;
+  border-radius: 3px;
+
+  color: white;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.reference-search-button {
+  background: #00a65a;
+}
+
+.reference-search-button:hover {
+  background: #008d4c;
+}
+
+.reference-clear-button {
+  background: #dd4b39;
+}
+
+.reference-clear-button:hover {
+  background: #c9302c;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.employee-error {
+  margin: 0 15px 15px;
+
+  padding: 10px 15px;
+
+  background: #f2dede;
+
+  border: 1px solid #ebccd1;
+
+  color: #a94442;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.reference-table-container {
+  width: 100%;
+
+  padding: 0 15px;
+
+  overflow-x: auto;
+}
+
+.reference-employee-table {
+  width: 100%;
+
+  table-layout: fixed;
+
+  border-collapse: collapse;
+
+  background: white;
+
+  font-size: 14px;
+}
+
+.reference-employee-table th,
+.reference-employee-table td {
+  height: 41px;
+
+  padding: 7px;
+
+  border: 1px solid #eee;
+
+  color: #222;
+
+  text-align: left;
+
+  vertical-align: middle;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.reference-employee-table th {
+  height: 37px;
+
+  background: #fff;
+
+  font-weight: 700;
+}
+
+.reference-employee-table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.reference-employee-table tbody tr:hover {
+  background: #f5f5f5;
+}
+
+
+/* =========================================================
+   COLUMN WIDTHS
+========================================================= */
+
+.reference-employee-table th:nth-child(1),
+.reference-employee-table td:nth-child(1) {
+  width: 9%;
+}
+
+.reference-employee-table th:nth-child(2),
+.reference-employee-table td:nth-child(2) {
+  width: 9%;
+}
+
+.reference-employee-table th:nth-child(3),
+.reference-employee-table td:nth-child(3) {
+  width: 9%;
+}
+
+.reference-employee-table th:nth-child(4),
+.reference-employee-table td:nth-child(4) {
+  width: 20%;
+}
+
+.reference-employee-table th:nth-child(5),
+.reference-employee-table td:nth-child(5) {
+  width: 5%;
+}
+
+.reference-employee-table th:nth-child(6),
+.reference-employee-table td:nth-child(6) {
+  width: 10%;
+}
+
+.reference-employee-table th:nth-child(7),
+.reference-employee-table td:nth-child(7) {
+  width: 9%;
+}
+
+.reference-employee-table th:nth-child(8),
+.reference-employee-table td:nth-child(8) {
+  width: 10%;
+}
+
+.reference-employee-table th:nth-child(9),
+.reference-employee-table td:nth-child(9) {
+  width: 12%;
+}
+
+
+/* =========================================================
+   SORT
+========================================================= */
+
+.sort-icon {
+  float: right;
+
+  margin-left: 5px;
+
+  color: #d0d0d0;
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   GENDER
+========================================================= */
+
+.gender-column {
+  text-align: center !important;
+}
+
+.male-icon,
+.female-icon {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  color: #3c8dbc;
+
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.female-icon {
+  font-size: 25px;
+}
+
+
+/* =========================================================
+   ACTION
+========================================================= */
+
+.action-column {
+  text-align: center !important;
+}
+
+.table-edit-button,
+.table-delete-button {
+  height: 24px;
+
+  padding: 0 8px;
+
+  margin: 0 2px;
+
+  border: 0;
+  border-radius: 3px;
+
+  color: white;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.table-edit-button {
+  background: #00a65a;
+}
+
+.table-edit-button:hover {
+  background: #008d4c;
+}
+
+.table-delete-button {
+  background: #dd4b39;
+}
+
+.table-delete-button:hover {
+  background: #c9302c;
+}
+
+
+/* =========================================================
+   NO RECORDS
+========================================================= */
+
+.no-employees {
+  height: 80px !important;
+
+  text-align: center !important;
+
+  color: #777 !important;
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.reference-pagination {
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 0;
+
+  padding: 17px 15px 8px;
+}
+
+.reference-pagination button {
+  height: 27px;
+
+  min-width: 43px;
+
+  padding: 0 9px;
+
+  border: 1px solid #ddd;
+
+  background: white;
+
+  color: #337ab7;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.reference-pagination button:hover:not(:disabled) {
+  background: #eee;
+}
+
+.reference-pagination button:disabled {
+  color: #aaa;
+
+  background: white;
+
+  cursor: not-allowed;
+}
+
+.pagination-page-number {
+  color: #333 !important;
+
+  background: white !important;
+
+  cursor: default !important;
+}
+
+.pagination-total {
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 12px;
+
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+
+  background: #f5f5f5;
+
+  color: #333;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   DELETE MODAL
+========================================================= */
+
+.delete-modal-overlay {
+  position: fixed;
+
+  z-index: 5000;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.delete-modal {
+  position: relative;
+
+  width: 485px;
+
+  min-height: 285px;
+
+  padding: 35px 25px 25px;
+
+  background: white;
+
+  border-radius: 6px;
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+
+  text-align: center;
+}
+
+.delete-modal-close {
+  position: absolute;
+
+  top: 12px;
+  right: 15px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #ccc;
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.delete-modal-close:hover {
+  color: #999;
+}
+
+.delete-warning-icon {
+  width: 84px;
+  height: 84px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 4px auto 25px;
+
+  border: 4px solid #f8cda9;
+
+  border-radius: 50%;
+
+  color: #f2b47d;
+
+  font-size: 55px;
+
+  font-weight: 300;
+}
+
+.delete-modal h2 {
+  margin: 0;
+
+  color: #5c5c5c;
+
+  font-size: 28px;
+
+  font-weight: 700;
+}
+
+.delete-employee-name {
+  margin: 10px 0 0;
+
+  color: #777;
+
+  font-size: 15px;
+}
+
+.delete-modal-actions {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 32px;
+}
+
+.delete-yes-button,
+.delete-cancel-button {
+  min-width: 95px;
+
+  height: 44px;
+
+  border: 0;
+
+  border-radius: 4px;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.delete-yes-button {
+  background: #3c8dbc;
+}
+
+.delete-yes-button:hover {
+  background: #337ca8;
+}
+
+.delete-cancel-button {
+  background: #dd3333;
+}
+
+.delete-cancel-button:hover {
+  background: #c52d2d;
+}
+
+.delete-yes-button:disabled,
+.delete-cancel-button:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .reference-search-form {
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+  }
+
+  .reference-search-actions {
+    justify-content: flex-start;
+  }
+
+  .delete-modal {
+    width: calc(100% - 30px);
+    max-width: 485px;
+  }
+
+}

@@ -1,0 +1,596 @@
+/* =====================================================
+   MAGNUS EDIT EMPLOYEE PAGE
+   ===================================================== */
+
+.magnus-edit-page {
+  width: 100%;
+  min-height: calc(100vh - 62px);
+  box-sizing: border-box;
+  background: #ecf0f5;
+  padding: 14px 15px 65px;
+}
+
+
+/* =====================================================
+   PAGE HEADER
+   ===================================================== */
+
+.magnus-edit-heading {
+  width: 100%;
+  min-height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+}
+
+.magnus-edit-title {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.magnus-edit-title h1 {
+  margin: 0;
+
+  font-size: 25px;
+  line-height: 32px;
+  font-weight: 400;
+
+  color: #333;
+}
+
+.magnus-edit-title span {
+  font-size: 14px;
+  color: #777;
+}
+
+
+/* =====================================================
+   BREADCRUMB
+   ===================================================== */
+
+.magnus-edit-breadcrumb {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  font-size: 12px;
+  color: #333;
+
+  white-space: nowrap;
+}
+
+.breadcrumb-home-icon {
+  font-size: 12px;
+  color: #333;
+}
+
+.breadcrumb-arrow {
+  color: #aaa;
+}
+
+
+/* =====================================================
+   MAIN CARD
+   ===================================================== */
+
+.magnus-edit-card {
+  width: 100%;
+
+  background: #fff;
+
+  border-top: 3px solid #00c0ef;
+  border-radius: 3px;
+
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.08);
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   CARD HEADER
+   ===================================================== */
+
+.magnus-edit-card-header {
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 10px;
+
+  box-sizing: border-box;
+
+  font-size: 18px;
+  font-weight: 400;
+
+  color: #333;
+
+  border-bottom: 1px solid #eee;
+}
+
+
+/* =====================================================
+   ALERTS
+   ===================================================== */
+
+.magnus-edit-error {
+  margin: 12px 28px 0;
+
+  padding: 9px 12px;
+
+  background: #f2dede;
+  border: 1px solid #ebccd1;
+
+  color: #a94442;
+
+  font-size: 13px;
+
+  border-radius: 3px;
+}
+
+.magnus-edit-success {
+  margin: 12px 28px 0;
+
+  padding: 9px 12px;
+
+  background: #dff0d8;
+  border: 1px solid #d6e9c6;
+
+  color: #3c763d;
+
+  font-size: 13px;
+
+  border-radius: 3px;
+}
+
+
+/* =====================================================
+   FORM
+   ===================================================== */
+
+.magnus-edit-form {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  column-gap: 28px;
+  row-gap: 14px;
+
+  padding: 10px 28px 19px;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   FORM FIELD
+   ===================================================== */
+
+.magnus-form-field {
+  min-width: 0;
+}
+
+.magnus-form-field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #222;
+}
+
+
+/* =====================================================
+   INPUTS
+   ===================================================== */
+
+.magnus-form-field input[type="text"],
+.magnus-form-field input[type="email"],
+.magnus-form-field input[type="date"],
+.magnus-form-field select,
+.magnus-form-field textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d2d6de;
+  border-radius: 0;
+
+  background: #fff;
+
+  color: #555;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+
+  outline: none;
+}
+
+.magnus-form-field input[type="text"],
+.magnus-form-field input[type="email"],
+.magnus-form-field input[type="date"],
+.magnus-form-field select {
+  height: 33px;
+
+  padding: 6px 12px;
+}
+
+.magnus-form-field textarea {
+  height: 72px;
+
+  padding: 8px 12px;
+
+  resize: vertical;
+}
+
+.magnus-form-field input:focus,
+.magnus-form-field select:focus,
+.magnus-form-field textarea:focus {
+  border-color: #3c8dbc;
+
+  box-shadow:
+    0 0 2px rgba(60, 141, 188, 0.25);
+}
+
+
+/* =====================================================
+   ADDRESS
+   ===================================================== */
+
+.magnus-address-field {
+  grid-column: 1 / -1;
+}
+
+
+/* =====================================================
+   DATE
+   ===================================================== */
+
+.magnus-date-input {
+  position: relative;
+
+  width: 100%;
+}
+
+.magnus-date-input input {
+  padding-right: 38px !important;
+}
+
+.magnus-calendar-icon {
+  position: absolute;
+
+  right: 10px;
+  top: 7px;
+
+  font-size: 14px;
+
+  color: #777;
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   GENDER
+   ===================================================== */
+
+.magnus-gender-field {
+  min-width: 0;
+}
+
+.magnus-gender-options {
+  height: 33px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.magnus-gender-options label {
+  display: flex;
+  align-items: center;
+
+  gap: 3px;
+
+  margin: 0;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  color: #222;
+}
+
+.magnus-gender-options input {
+  margin: 0;
+}
+
+
+/* =====================================================
+   OTHER CITY
+   ===================================================== */
+
+.magnus-other-city {
+  display: flex;
+  align-items: center;
+
+  padding-top: 27px;
+}
+
+.magnus-other-city label {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin: 0;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  color: #222;
+
+  white-space: nowrap;
+}
+
+.magnus-other-city input {
+  width: 19px;
+  height: 19px;
+
+  margin: 0;
+}
+
+.magnus-other-city-input {
+  display: flex;
+  align-items: center;
+
+  padding-top: 27px;
+}
+
+.magnus-other-city-input input {
+  width: 170px;
+  height: 33px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d2d6de;
+
+  padding: 6px 10px;
+
+  outline: none;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   SKILLS
+   ===================================================== */
+
+.magnus-skills-section {
+  width: 100%;
+
+  padding: 0 28px;
+
+  box-sizing: border-box;
+}
+
+.magnus-skills-section h2 {
+  margin: 0;
+
+  font-size: 17px;
+  font-weight: 400;
+
+  color: #333;
+}
+
+.magnus-skills-divider {
+  width: 100%;
+  height: 1px;
+
+  margin-top: 18px;
+
+  background: #eee;
+}
+
+.magnus-skills-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  column-gap: 35px;
+  row-gap: 8px;
+
+  padding: 35px 14px 18px;
+
+  box-sizing: border-box;
+}
+
+.magnus-skill-item {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  color: #222;
+
+  cursor: pointer;
+}
+
+.magnus-skill-item input {
+  width: 13px;
+  height: 13px;
+
+  margin: 0;
+}
+
+
+/* =====================================================
+   BUTTON AREA
+   ===================================================== */
+
+.magnus-edit-actions {
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 10px;
+
+  box-sizing: border-box;
+
+  border-top: 1px solid #eee;
+}
+
+
+/* =====================================================
+   UPDATE BUTTON
+   ===================================================== */
+
+.magnus-update-button,
+.magnus-cancel-button {
+  min-width: 67px;
+  height: 33px;
+
+  border: none;
+  border-radius: 3px;
+
+  padding: 6px 14px;
+
+  color: #fff;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.magnus-update-button {
+  background: #00a65a;
+}
+
+.magnus-update-button:hover {
+  background: #008d4c;
+}
+
+.magnus-cancel-button {
+  background: #dd4b39;
+}
+
+.magnus-cancel-button:hover {
+  background: #d73925;
+}
+
+.magnus-update-button:disabled,
+.magnus-cancel-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   LOADING
+   ===================================================== */
+
+.magnus-edit-loading {
+  width: 100%;
+
+  padding: 40px;
+
+  box-sizing: border-box;
+
+  background: #fff;
+
+  border-top: 3px solid #00c0ef;
+
+  text-align: center;
+
+  color: #666;
+
+  font-size: 15px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 1000px) {
+  .magnus-edit-form {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+  }
+
+  .magnus-address-field {
+    grid-column: 1 / -1;
+  }
+
+  .magnus-skills-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+@media (max-width: 650px) {
+  .magnus-edit-heading {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 7px;
+
+    padding-bottom: 8px;
+  }
+
+  .magnus-edit-breadcrumb {
+    align-self: flex-end;
+  }
+
+  .magnus-edit-form {
+    grid-template-columns: 1fr;
+
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .magnus-address-field {
+    grid-column: auto;
+  }
+
+  .magnus-skills-section {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .magnus-skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .magnus-edit-actions {
+    padding: 10px 15px;
+  }
+}

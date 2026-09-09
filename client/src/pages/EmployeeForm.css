@@ -1,0 +1,404 @@
+.employee-form-page {
+  min-height: calc(100vh - 115px);
+
+  padding: 0 15px 35px;
+
+  background: #ecf0f5;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.employee-form-heading {
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.employee-form-title {
+  font-size: 27px;
+
+  font-weight: 400;
+
+  color: #222;
+}
+
+.employee-form-subtitle {
+  margin-left: 14px;
+
+  color: #777;
+
+  font-size: 16px;
+}
+
+.employee-form-breadcrumb {
+  color: #555;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.employee-form-panel {
+  background: white;
+
+  border: 1px solid #ddd;
+
+  border-top: 3px solid #00a8d6;
+
+  border-radius: 3px;
+}
+
+.employee-form-panel-title {
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 12px;
+
+  border-bottom: 1px solid #eee;
+
+  color: #222;
+
+  font-size: 19px;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.employee-form-error {
+  margin: 15px 28px;
+
+  padding: 10px 14px;
+
+  background: #f2dede;
+
+  border: 1px solid #ebccd1;
+
+  color: #a94442;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.employee-form {
+  padding: 15px 28px 20px;
+}
+
+.form-row {
+  display: grid;
+
+  gap: 28px;
+}
+
+.three-columns {
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  margin-bottom: 20px;
+}
+
+.form-field label,
+.gender-form-field > label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #111;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.form-field label span {
+  color: #dd4b39;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+
+  border: 1px solid #d4d9de;
+
+  outline: none;
+
+  background: white;
+
+  color: #333;
+
+  font-size: 14px;
+}
+
+.form-field input,
+.form-field select {
+  height: 34px;
+
+  padding: 6px 12px;
+}
+
+.form-field textarea {
+  padding: 8px 12px;
+
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #3c8dbc;
+}
+
+
+/* =========================================================
+   ADDRESS
+========================================================= */
+
+.full-field {
+  margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   GENDER
+========================================================= */
+
+.gender-form-field {
+  padding-top: 0;
+}
+
+.gender-options {
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.gender-options label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 3px;
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  cursor: pointer;
+}
+
+.gender-options input {
+  margin: 0;
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location-row {
+  grid-template-columns:
+    300px
+    300px
+    1fr;
+
+  align-items: end;
+
+  margin-bottom: 48px;
+}
+
+.other-city-checkbox {
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #222;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.other-city-checkbox input {
+  width: 18px;
+
+  height: 18px;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills-form-section {
+  margin-top: 20px;
+}
+
+.skills-form-section h3 {
+  margin: 0;
+
+  color: #222;
+
+  font-size: 19px;
+
+  font-weight: 400;
+}
+
+.skills-line {
+  height: 1px;
+
+  margin-top: 22px;
+
+  background: #eee;
+}
+
+.skills-form-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  row-gap: 12px;
+
+  margin-top: 35px;
+}
+
+.skill-checkbox {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  color: #222;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.skill-checkbox input {
+  width: 15px;
+
+  height: 15px;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.employee-form-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 55px;
+}
+
+.employee-save-button,
+.employee-cancel-button {
+  min-width: 65px;
+
+  height: 34px;
+
+  padding: 0 15px;
+
+  border: 0;
+
+  border-radius: 3px;
+
+  color: white;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.employee-save-button {
+  background: #00a65a;
+}
+
+.employee-save-button:hover {
+  background: #008d4c;
+}
+
+.employee-cancel-button {
+  background: #dd4b39;
+}
+
+.employee-cancel-button:hover {
+  background: #c9302c;
+}
+
+.employee-save-button:disabled,
+.employee-cancel-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.form-loading {
+  padding: 100px;
+
+  text-align: center;
+
+  color: #777;
+
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .three-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .location-row {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-form-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
