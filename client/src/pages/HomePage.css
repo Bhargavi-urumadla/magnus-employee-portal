@@ -1,0 +1,209 @@
+/* =====================================================
+   MAGNUS HOME PAGE
+   ===================================================== */
+
+.magnus-home-page {
+  width: 100%;
+  min-height: calc(100vh - 62px);
+
+  box-sizing: border-box;
+
+  background: #ecf0f5;
+
+  padding: 82px 38px 120px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #222;
+}
+
+
+/* =====================================================
+   WELCOME
+   ===================================================== */
+
+.home-welcome {
+  text-align: center;
+
+  margin-bottom: 82px;
+}
+
+.home-welcome h1 {
+  margin: 0;
+
+  font-size: 36px;
+  line-height: 43px;
+
+  font-weight: 400;
+
+  color: #222;
+}
+
+.home-welcome p {
+  margin: 34px 0 0;
+
+  font-size: 14px;
+
+  color: #222;
+}
+
+
+/* =====================================================
+   INTRODUCTION
+   ===================================================== */
+
+.home-introduction {
+  text-align: center;
+
+  margin-bottom: 20px;
+
+  font-size: 14px;
+
+  line-height: 28px;
+
+  font-weight: 600;
+}
+
+.home-introduction p {
+  margin: 0;
+}
+
+
+/* =====================================================
+   MAIN WHITE CARD
+   ===================================================== */
+
+.home-card {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  background: #fff;
+
+  border-top: 3px solid #3c8dbc;
+
+  border-radius: 3px;
+
+  padding: 12px 15px 20px;
+
+  margin-bottom: 20px;
+
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.home-card p {
+  margin: 0 0 10px;
+
+  font-size: 14px;
+
+  line-height: 20px;
+
+  color: #333;
+}
+
+.home-card p:last-child {
+  margin-bottom: 0;
+}
+
+.home-card a {
+  color: #337ab7;
+
+  text-decoration: none;
+}
+
+.home-card a:hover {
+  text-decoration: underline;
+}
+
+
+/* =====================================================
+   YELLOW CARD
+   ===================================================== */
+
+.home-yellow-card {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  background: #fff;
+
+  border-top: 3px solid #3c8dbc;
+
+  border-radius: 3px;
+
+  padding: 17px 15px 20px;
+
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.home-yellow-message {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 3px 0;
+
+  background: #ffff00;
+
+  color: #000;
+
+  font-size: 14px;
+
+  line-height: 18px;
+
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+  .magnus-home-page {
+    padding: 55px 25px 100px;
+  }
+
+  .home-welcome {
+    margin-bottom: 55px;
+  }
+
+  .home-welcome h1 {
+    font-size: 30px;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .magnus-home-page {
+    padding: 40px 15px 80px;
+  }
+
+  .home-welcome {
+    margin-bottom: 40px;
+  }
+
+  .home-welcome h1 {
+    font-size: 25px;
+    line-height: 32px;
+  }
+
+  .home-welcome p {
+    margin-top: 20px;
+  }
+
+  .home-introduction {
+    font-size: 13px;
+    line-height: 22px;
+  }
+
+  .home-card,
+  .home-yellow-card {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}

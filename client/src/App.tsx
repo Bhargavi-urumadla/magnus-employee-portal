@@ -1,122 +1,209 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { Navigate, Route, Routes } from "react-router-dom";
+import type { ReactNode } from "react";
+
+import MagnusLayout from "./components/MagnusLayout";
+
+import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/HomePage";
+import EmployeePage from "./pages/EmployeePage";
+import CreateEmployeePage from "./pages/CreateEmployeePage";
+import MultipleTabsPage from "./pages/MultipleTabsPage";
+import MenuPage from "./pages/MenuPage";
+import AutocompletePage from "./pages/AutocompletePage";
+import CollapsibleContentPage from "./pages/CollapsibleContentPage";
+import ImagesPage from "./pages/ImagesPage";
+import SliderPage from "./pages/SliderPage";
+import TooltipPage from "./pages/TooltipPage";
+import PopupPage from "./pages/PopupPage";
+import LinksPage from "./pages/LinksPage";
+import CSSPropertiesPage from "./pages/CSSPropertiesPage";
+import IFramesPage from "./pages/IFramesPage";
+import EditEmployeePage from "./pages/EditEmployeePage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import AdminLoginPage from "./pages/AdminLoginPage";
+
+/* =====================================================
+   PROTECTED ROUTE
+
+   Only logged-in users can access the application.
+   ===================================================== */
+
+const ProtectedRoute = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
+  const isLoggedIn =
+    localStorage.getItem("magnusLoggedIn") === "true";
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <>{children}</>;
+};
+
+
+/* =====================================================
+   APP
+   ===================================================== */
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <Routes>
 
-      <div className="ticks"></div>
+      {/* =================================================
+          LOGIN PAGE
+          PUBLIC - NO LOGIN REQUIRED
+      ================================================= */}
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <Route
+        path="/login"
+        element={<LoginPage />}
+      />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+       <Route
+    path="/admin-login"
+    element={<AdminLoginPage />}
+  />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+
+      {/* =================================================
+          ALL OTHER PAGES
+          LOGIN REQUIRED
+      ================================================= */}
+
+      <Route
+        element={
+          <ProtectedRoute>
+            <MagnusLayout />
+          </ProtectedRoute>
+        }
+      >
+
+        {/* ROOT */}
+
+        <Route
+          path="/"
+          element={
+            <Navigate
+              to="/home"
+              replace
+            />
+          }
+        />
+
+
+        {/* HOME */}
+
+        <Route
+          path="/home"
+          element={<HomePage />}
+        />
+
+
+        {/* =================================================
+            EMPLOYEE
+        ================================================= */}
+
+        <Route
+          path="/employees"
+          element={<EmployeePage />}
+        />
+
+        <Route
+          path="/employees/create"
+          element={<CreateEmployeePage />}
+        />
+
+        <Route
+          path="/employees/edit/:id"
+          element={<EditEmployeePage />}
+        />
+
+
+        {/* =================================================
+            MORE
+        ================================================= */}
+
+        <Route
+          path="/more/multiple-tabs"
+          element={<MultipleTabsPage />}
+        />
+
+        <Route
+          path="/more/menu"
+          element={<MenuPage />}
+        />
+
+        <Route
+          path="/more/autocomplete"
+          element={<AutocompletePage />}
+        />
+
+        <Route
+          path="/more/collapsible-content"
+          element={<CollapsibleContentPage />}
+        />
+
+        <Route
+          path="/more/images"
+          element={<ImagesPage />}
+        />
+
+        <Route
+          path="/more/slider"
+          element={<SliderPage />}
+        />
+
+        <Route
+          path="/more/tooltips"
+          element={<TooltipPage />}
+        />
+
+        <Route
+          path="/more/popups"
+          element={<PopupPage />}
+        />
+
+        <Route
+          path="/more/links"
+          element={<LinksPage />}
+        />
+
+        <Route
+          path="/more/css-properties"
+          element={<CSSPropertiesPage />}
+        />
+
+        <Route
+          path="/more/iframes"
+          element={<IFramesPage />}
+        />
+
+      </Route>
+
+
+      {/* =================================================
+          UNKNOWN URL
+
+          If user is not logged in, go to login.
+          If logged in, go to home.
+      ================================================= */}
+
+      <Route
+        path="*"
+        element={
+          localStorage.getItem("magnusLoggedIn") === "true" ? (
+            <Navigate to="/home" replace />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      />
+
+    </Routes>
+  );
 }
 
-export default App
+export default App;

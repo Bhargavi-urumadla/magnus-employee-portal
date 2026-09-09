@@ -1,0 +1,342 @@
+* {
+  box-sizing: border-box;
+}
+
+.magnus-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #ecf0f5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.magnus-header {
+  height: 62px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #3c8dbc;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.magnus-logo {
+  width: 222px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  padding-left: 74px;
+  background: #367fa9;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.magnus-logout {
+  margin-left: auto;
+  margin-right: 20px;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  height: 40px;
+  padding: 0 8px;
+}
+
+.magnus-logout:hover {
+  opacity: 0.85;
+}
+
+.logout-icon {
+  font-size: 18px;
+  margin-right: 7px;
+  vertical-align: -1px;
+}
+
+/* =========================
+   BODY
+========================= */
+
+.magnus-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.magnus-sidebar {
+  width: 222px;
+  min-width: 222px;
+  background: #222d32;
+  color: #ffffff;
+  min-height: calc(100vh - 112px);
+  overflow-y: auto;
+}
+
+/* PROFILE */
+
+.sidebar-profile {
+  height: 86px;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  background: #222d32;
+}
+
+.profile-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #777;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.profile-head {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #333;
+  position: absolute;
+  top: 7px;
+  left: 15px;
+}
+
+.profile-body {
+  width: 34px;
+  height: 22px;
+  border-radius: 50% 50% 0 0;
+  background: #333;
+  position: absolute;
+  left: 7px;
+  bottom: 5px;
+}
+
+.profile-info {
+  margin-left: 10px;
+}
+
+.profile-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-role {
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.role-icon {
+  margin-right: 6px;
+}
+
+/* MAIN SIDEBAR LINKS */
+
+.sidebar-main-link {
+  width: 100%;
+  min-height: 43px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border: none;
+  text-decoration: none;
+  background: transparent;
+  color: #b8c7ce;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sidebar-main-link:hover {
+  background: #1e282c;
+  color: #ffffff;
+}
+
+.sidebar-main-link.active {
+  background: #1e282c;
+  color: #ffffff;
+}
+
+.sidebar-icon {
+  width: 23px;
+  margin-right: 1px;
+  font-size: 14px;
+  color: #b8c7ce;
+}
+
+.sidebar-main-link.active .sidebar-icon {
+  color: #ffffff;
+}
+
+/* DROPDOWN */
+
+.sidebar-dropdown-button {
+  position: relative;
+}
+
+.dropdown-arrow {
+  margin-left: auto;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.more-button.section-open {
+  background: #1e282c;
+  color: #ffffff;
+}
+
+/* SUBMENU */
+
+.sidebar-submenu {
+  background: #2c3b41;
+}
+
+.sidebar-sub-link {
+  min-height: 29px;
+  padding: 0 10px 0 18px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #b8c7ce;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sidebar-sub-link:hover {
+  background: #374850;
+  color: #ffffff;
+}
+
+.sidebar-sub-link.active {
+  color: #ffffff;
+  background: #374850;
+}
+
+.sidebar-sub-link.more-active {
+  font-weight: 400;
+}
+
+.sub-link-icon {
+  width: 21px;
+  margin-right: 0;
+  font-size: 13px;
+  color: #b8c7ce;
+}
+
+.sidebar-sub-link.active .sub-link-icon {
+  color: #ffffff;
+}
+
+/* SETTINGS */
+
+.settings-button {
+  margin-top: 0;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.magnus-content {
+  flex: 1;
+  min-width: 0;
+  background: #ecf0f5;
+  overflow-x: hidden;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.magnus-footer {
+  height: 50px;
+  min-height: 50px;
+  margin-left: 222px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  background: #ffffff;
+  border-top: 1px solid #d2d6de;
+  color: #444444;
+  font-size: 14px;
+}
+
+.footer-company {
+  margin-left: 4px;
+  color: #337ab7;
+  font-weight: 600;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .magnus-logo {
+    width: 180px;
+    min-width: 180px;
+    padding-left: 30px;
+  }
+
+  .magnus-sidebar {
+    width: 180px;
+    min-width: 180px;
+  }
+
+  .magnus-footer {
+    margin-left: 180px;
+  }
+}
+
+@media (max-width: 650px) {
+  .magnus-sidebar {
+    width: 65px;
+    min-width: 65px;
+  }
+
+  .magnus-logo {
+    width: 65px;
+    min-width: 65px;
+    padding-left: 10px;
+    font-size: 0;
+  }
+
+  .magnus-logo::after {
+    content: "M";
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .profile-info,
+  .sidebar-main-link > span:not(.sidebar-icon),
+  .dropdown-arrow,
+  .sidebar-submenu {
+    display: none;
+  }
+
+  .sidebar-main-link {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .sidebar-icon {
+    margin: 0;
+    text-align: center;
+  }
+
+  .magnus-footer {
+    margin-left: 65px;
+    font-size: 11px;
+  }
+}

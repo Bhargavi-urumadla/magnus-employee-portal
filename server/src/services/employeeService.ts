@@ -1,7 +1,19 @@
-import { Employee, IEmployee } from "../models/Employee";
+import { Employee as EmployeeModel } from "../models/Employee";
+import type { Employee } from "../types/employee";
 
-interface GetEmployeesOptions {
+export interface EmployeeListResponse {
+  success: boolean;
+  count: number;
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+  employees: Employee[];
+}
+
+interface GetEmployeesParams {
   search?: string;
+  mobileNumber?: string;
   skill?: string;
   country?: string;
   city?: string;
@@ -11,50 +23,64 @@ interface GetEmployeesOptions {
   limit?: number;
 }
 
-interface GetEmployeesResult {
-  employees: IEmployee[];
-  total: number;
-  page: number;
-  limit: number;
-  totalPages: number;
-}
+export const getEmployees = async ({
+  search,
+  mobileNumber,
+  skill,
+  country,
+  city,
+  sortBy = "createdAt",
+  order = "desc",
+  page = 1,
+  limit = 10,
+}: GetEmployeesParams = {}): Promise<EmployeeListResponse> => {
+  const safePage = Math.max(1, page);
+  const safeLimit = Math.max(1, limit);
 
-export const createEmployee = async (
-  employeeData: Partial<IEmployee>
-): Promise<IEmployee> => {
-  return Employee.create(employeeData);
-};
+  const skip = (safePage - 1) * safeLimit;
 
-export const getEmployees = async (
-  options: GetEmployeesOptions = {}
-): Promise<GetEmployeesResult> => {
-  const {
-    search,
-    skill,
-    country,
-    city,
-    sortBy = "createdAt",
-    order = "desc",
-    page = 1,
-    limit = 10,
-  } = options;
+  const query: Record<string, any> = {};
 
-  const filter: Record<string, unknown> = {};
-
-  // Search by first name, last name or email
+  // Search by first name, last name, email or mobile
   if (search?.trim()) {
-    const searchRegex = new RegExp(search.trim(), "i");
+    const searchValue = search.trim();
 
-    filter.$or = [
-      { firstName: searchRegex },
-      { lastName: searchRegex },
-      { email: searchRegex },
+    query.$or = [
+      {
+        firstName: {
+          $regex: searchValue,
+          $options: "i",
+        },
+      },
+      {
+        lastName: {
+          $regex: searchValue,
+          $options: "i",
+        },
+      },
+      {
+        email: {
+          $regex: searchValue,
+          $options: "i",
+        },
+      },
+      {
+        mobileNumber: {
+          $regex: searchValue,
+          $options: "i",
+        },
+      },
     ];
   }
-
+if (mobileNumber?.trim()) {
+  query.mobileNumber = {
+    $regex: mobileNumber.trim(),
+    $options: "i",
+  };
+}
   // Filter by skill
   if (skill?.trim()) {
-    filter.skills = {
+    query.skills = {
       $regex: skill.trim(),
       $options: "i",
     };
@@ -62,7 +88,7 @@ export const getEmployees = async (
 
   // Filter by country
   if (country?.trim()) {
-    filter.country = {
+    query.country = {
       $regex: country.trim(),
       $options: "i",
     };
@@ -70,29 +96,22 @@ export const getEmployees = async (
 
   // Filter by city
   if (city?.trim()) {
-    filter.city = {
+    query.city = {
       $regex: city.trim(),
       $options: "i",
     };
   }
 
-  const safePage = Math.max(1, Number(page) || 1);
-  const safeLimit = Math.min(
-    Math.max(1, Number(limit) || 10),
-    100
-  );
-
-  const skip = (safePage - 1) * safeLimit;
-
-  // Allowed sorting fields
+  // Sorting
   const allowedSortFields = [
     "firstName",
     "lastName",
     "email",
+    "mobileNumber",
+    "dateOfBirth",
     "country",
     "city",
     "createdAt",
-    "updatedAt",
   ];
 
   const selectedSortField = allowedSortFields.includes(sortBy)
@@ -101,46 +120,120 @@ export const getEmployees = async (
 
   const sortOrder = order.toLowerCase() === "asc" ? 1 : -1;
 
-  const [employees, total] = await Promise.all([
-    Employee.find(filter)
-      .sort({ [selectedSortField]: sortOrder })
-      .skip(skip)
-      .limit(safeLimit),
+  const sort: Record<string, 1 | -1> = {
+    [selectedSortField]: sortOrder,
+  };
 
-    Employee.countDocuments(filter),
+  const [employees, total] = await Promise.all([
+    EmployeeModel.find(query)
+      .sort(sort)
+      .skip(skip)
+      .limit(safeLimit)
+      .lean(),
+
+    EmployeeModel.countDocuments(query),
   ]);
 
   return {
-    employees,
+    success: true,
+    count: employees.length,
     total,
     page: safePage,
     limit: safeLimit,
     totalPages: Math.ceil(total / safeLimit),
+    employees: employees as unknown as Employee[],
   };
 };
 
-export const getEmployeeById = async (
-  employeeId: string
-): Promise<IEmployee | null> => {
-  return Employee.findById(employeeId);
+
+// =====================================================
+// CREATE EMPLOYEE
+// =====================================================
+
+export const createEmployee = async (
+  employeeData: Employee
+): Promise<Employee> => {
+  const existingEmployee = await EmployeeModel.findOne({
+    email: employeeData.email,
+  });
+
+  if (existingEmployee) {
+    throw new Error("Employee with this email already exists");
+  }
+
+  const employee = await EmployeeModel.create(employeeData);
+
+  return employee.toObject() as unknown as Employee;
 };
 
+
+// =====================================================
+// GET SINGLE EMPLOYEE
+// =====================================================
+
+export const getEmployeeById = async (
+  id: string
+): Promise<Employee | null> => {
+  const employee = await EmployeeModel.findById(id).lean();
+
+  if (!employee) {
+    return null;
+  }
+
+  return employee as unknown as Employee;
+};
+
+
+// =====================================================
+// UPDATE EMPLOYEE
+// =====================================================
+
 export const updateEmployee = async (
-  employeeId: string,
-  employeeData: Partial<IEmployee>
-): Promise<IEmployee | null> => {
-  return Employee.findByIdAndUpdate(
-    employeeId,
+  id: string,
+  employeeData: Partial<Employee>
+): Promise<Employee | null> => {
+  if (employeeData.email) {
+    const existingEmployee = await EmployeeModel.findOne({
+      email: employeeData.email,
+      _id: { $ne: id },
+    });
+
+    if (existingEmployee) {
+      throw new Error(
+        "Another employee with this email already exists"
+      );
+    }
+  }
+
+  const employee = await EmployeeModel.findByIdAndUpdate(
+    id,
     employeeData,
     {
       new: true,
       runValidators: true,
     }
-  );
+  ).lean();
+
+  if (!employee) {
+    return null;
+  }
+
+  return employee as unknown as Employee;
 };
 
+
+// =====================================================
+// DELETE EMPLOYEE
+// =====================================================
+
 export const deleteEmployee = async (
-  employeeId: string
-): Promise<IEmployee | null> => {
-  return Employee.findByIdAndDelete(employeeId);
+  id: string
+): Promise<Employee | null> => {
+  const employee = await EmployeeModel.findByIdAndDelete(id).lean();
+
+  if (!employee) {
+    return null;
+  }
+
+  return employee as unknown as Employee;
 };

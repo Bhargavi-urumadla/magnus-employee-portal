@@ -51,19 +51,24 @@ export const getEmployeesController = async (
   next: NextFunction
 ): Promise<void> => {
   try {
-    const {
-      search,
-      skill,
-      country,
-      city,
-      sortBy,
-      order,
-      page,
-      limit,
-    } = req.query;
+   const {
+  search,
+  mobileNumber,
+  skill,
+  country,
+  city,
+  sortBy,
+  order,
+  page,
+  limit,
+} = req.query;
 
     const result = await getEmployees({
       search: typeof search === "string" ? search : undefined,
+mobileNumber:
+  typeof mobileNumber === "string"
+    ? mobileNumber
+    : undefined,
       skill: typeof skill === "string" ? skill : undefined,
       country: typeof country === "string" ? country : undefined,
       city: typeof city === "string" ? city : undefined,

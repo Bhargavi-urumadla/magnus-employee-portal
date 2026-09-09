@@ -1,0 +1,465 @@
+/* =========================================================
+   CSS PROPERTIES PAGE
+========================================================= */
+
+.css-properties-page {
+  width: 100%;
+  min-height: calc(100vh - 112px);
+  background: #ecf0f5;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.css-page-header {
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px 0 15px;
+  box-sizing: border-box;
+}
+
+.css-page-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+  color: #222;
+}
+
+.css-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  color: #777;
+}
+
+.breadcrumb-home {
+  color: #555;
+  font-size: 12px;
+}
+
+.breadcrumb-arrow {
+  color: #aaa;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.css-properties-card {
+  margin: 0 29px;
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 3px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.css-tabs {
+  display: flex;
+  align-items: stretch;
+  height: 43px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+.css-tab {
+  min-width: 72px;
+  padding: 0 14px;
+  border: none;
+  border-right: 4px solid #fff;
+  background: #3c8dbc;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.css-tab:hover {
+  background: #367fa9;
+}
+
+.css-tab.active {
+  background: #fff;
+  color: #3c8dbc;
+  border-top: 3px solid #3c8dbc;
+  border-right: 4px solid #fff;
+  padding-top: 0;
+}
+
+.css-tab:first-child {
+  min-width: 63px;
+}
+
+
+/* =========================================================
+   TAB CONTENT
+========================================================= */
+
+.css-tab-content {
+  min-height: 172px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.css-demo {
+  width: 100%;
+  min-height: 172px;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+.css-links-demo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 33px;
+  padding-top: 43px;
+}
+
+.css-link {
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.css-link:hover {
+  text-decoration: underline;
+}
+
+.css-link-red {
+  color: red;
+}
+
+.css-link-blue {
+  color: blue;
+}
+
+.css-link-green {
+  color: green;
+}
+
+.css-link-orange {
+  color: #ff8c00;
+}
+
+.css-link-purple {
+  color: purple;
+}
+
+
+/* =========================================================
+   LABELS
+========================================================= */
+
+.css-labels-demo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+  padding-top: 45px;
+}
+
+.css-label {
+  display: inline-block;
+  padding: 2px 5px 3px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.label-default {
+  color: #333;
+  background: #d2d6de;
+}
+
+.label-primary {
+  background: #3c8dbc;
+}
+
+.label-success {
+  background: #00a65a;
+}
+
+.label-info {
+  background: #00c0ef;
+}
+
+.label-warning {
+  background: #f39c12;
+}
+
+.label-danger {
+  background: #dd4b39;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.css-buttons-demo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+  padding-top: 42px;
+}
+
+.css-button {
+  height: 34px;
+  padding: 0 13px;
+  border-radius: 3px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.css-button:hover {
+  opacity: 0.9;
+}
+
+.button-default {
+  color: #333;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.button-primary {
+  color: #fff;
+  background: #3c8dbc;
+  border: 1px solid #3c8dbc;
+}
+
+.button-success {
+  color: #fff;
+  background: #00a65a;
+  border: 1px solid #00a65a;
+}
+
+.button-warning {
+  color: #fff;
+  background: #f39c12;
+  border: 1px solid #f39c12;
+}
+
+.button-danger {
+  color: #fff;
+  background: #dd4b39;
+  border: 1px solid #dd4b39;
+}
+
+
+/* =========================================================
+   ALERTS
+========================================================= */
+
+.css-alerts-demo {
+  padding: 23px 24px 28px;
+  box-sizing: border-box;
+}
+
+.css-alert {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  padding: 15px 40px 15px 15px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.css-alert:last-child {
+  margin-bottom: 0;
+}
+
+.css-alert strong {
+  font-weight: 700;
+}
+
+.alert-success {
+  background: #00a65a;
+}
+
+.alert-info {
+  background: #00c0ef;
+}
+
+.alert-warning {
+  background: #f39c12;
+}
+
+.alert-danger {
+  background: #dd4b39;
+}
+
+.alert-close {
+  position: absolute;
+  top: 50%;
+  right: 13px;
+  transform: translateY(-50%);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.alert-close:hover {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.alerts-empty {
+  padding: 45px 0;
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   PROGRESS BARS
+========================================================= */
+
+.css-progress-demo {
+  padding: 23px 24px;
+  box-sizing: border-box;
+}
+
+.progress-track {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: #f5f5f5;
+  box-sizing: border-box;
+}
+
+.progress-track:last-child {
+  margin-bottom: 0;
+}
+
+.progress-bar {
+  height: 20px;
+}
+
+.progress-success {
+  width: 40%;
+  background: #00a65a;
+}
+
+.progress-info {
+  width: 20%;
+  background: #00c0ef;
+}
+
+.progress-warning {
+  width: 60%;
+  background: #f39c12;
+}
+
+.progress-danger {
+  width: 80%;
+  background: #dd4b39;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+  .css-page-header {
+    height: auto;
+    min-height: 74px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .css-breadcrumb {
+    align-self: flex-start;
+  }
+
+  .css-properties-card {
+    margin: 0 15px;
+  }
+
+  .css-tabs {
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .css-tab {
+    height: 43px;
+  }
+
+  .css-links-demo {
+    flex-wrap: wrap;
+    padding: 35px 20px;
+  }
+
+  .css-labels-demo {
+    flex-wrap: wrap;
+    padding: 35px 20px;
+  }
+
+  .css-buttons-demo {
+    flex-wrap: wrap;
+    padding: 35px 20px;
+  }
+
+  .css-alerts-demo {
+    padding: 20px;
+  }
+}
+/* =====================================================
+   VALIDATION
+===================================================== */
+
+.required {
+  color: #e74c3c;
+  font-weight: 700;
+}
+
+.field-error {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+  line-height: 16px;
+}
+
+.employee-form-error {
+  color: #b52b27;
+  background: #fbeaea;
+  border: 1px solid #f1b8b5;
+  padding: 10px 14px;
+  margin: 12px 20px;
+  border-radius: 3px;
+  font-size: 13px;
+}

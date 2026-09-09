@@ -71,5 +71,100 @@ export default defineConfig([
     },
   },
 ])
+# Magnus Employee Portal
 
+A full-stack Employee Management Portal inspired by the JALA Academy Magnus application.
+
+The project is built using React, TypeScript, Node.js, Express.js, and MongoDB. It provides employee management features, protected frontend routes, search, pagination, form validation, and additional UI demonstration pages.
+
+---
+
+## 📌 Project Overview
+
+Magnus Employee Portal is a web application for managing employee information.
+
+The application includes:
+
+- User Login
+- Forgot Password
+- Admin Login
+- Protected frontend routes
+- Employee List
+- Employee Search
+- Create Employee
+- Edit Employee
+- Delete Employee
+- Pagination
+- Form Validation
+- Additional UI demonstration pages
+- MongoDB database integration
+- REST API integration
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+
+- React.js
+- TypeScript
+- Vite
+- React Router DOM
+- HTML5
+- CSS3
+- Fetch API
+
+### Backend
+
+- Node.js
+- Express.js
+- TypeScript
+- MongoDB
+- Mongoose
+- CORS
+
+### Tools
+
+- Visual Studio Code
+- Git
+- GitHub
+- Postman
+- MongoDB Atlas
+- npm
+
+---
+
+## 📂 Project Structure
+
+```text
+magnus-employee-portal/
+│
+├── client/
+│   ├── src/
+│   │   ├── app/
+│   │   ├── components/
+│   │   ├── features/
+│   │   ├── pages/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── types/
+│   │   ├── App.tsx
+│   │   └── main.tsx
+│   │
+│   ├── package.json
+│   └── README.md
+│
+├── server/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   └── server.ts
+│   │
+│   └── package.json
+│
+└── .gitignore
 ```

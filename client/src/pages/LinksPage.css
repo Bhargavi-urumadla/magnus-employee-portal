@@ -1,0 +1,344 @@
+.links-page {
+  width: 100%;
+  min-height: calc(100vh - 112px);
+  background: #ecf0f5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.links-page-header {
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+.links-page-header h1 {
+  margin: 0;
+  color: #222;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.links-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #555;
+  font-size: 12px;
+}
+
+.breadcrumb-home {
+  font-size: 11px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.links-card {
+  width: calc(100% - 58px);
+  margin-left: 29px;
+  margin-right: 29px;
+
+  min-height: 217px;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e1e1;
+
+  border-radius: 3px;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   TABS
+========================= */
+
+.links-tabs {
+  height: 43px;
+
+  display: flex;
+  align-items: stretch;
+
+  border-bottom: 1px solid #ddd;
+
+  background: #ffffff;
+}
+
+.links-tab {
+  height: 43px;
+
+  padding: 0 15px;
+
+  border: none;
+  border-right: 4px solid #ffffff;
+
+  background: #3c8dbc;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+}
+
+.links-tab:hover {
+  background: #367fa9;
+}
+
+.links-tab.active {
+  background: #ffffff;
+
+  color: #337ab7;
+
+  border-top: 2px solid #3c8dbc;
+
+  border-right: 1px solid #ddd;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.links-card-content {
+  min-height: 172px;
+
+  background: #ffffff;
+
+  position: relative;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   WORKING / BROKEN LINKS
+========================= */
+
+.links-demo {
+  height: 172px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  gap: 28px;
+
+  padding-top: 43px;
+
+  box-sizing: border-box;
+}
+
+.working-link {
+  font-size: 14px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.working-link:hover {
+  text-decoration: underline;
+}
+
+.link-red {
+  color: red;
+}
+
+.link-blue {
+  color: blue;
+}
+
+.link-green {
+  color: green;
+}
+
+/* =========================
+   IMAGE LINKS
+========================= */
+
+.image-links-container {
+  height: 172px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 14px;
+}
+
+.image-link-button {
+  width: 105px;
+  height: 100px;
+
+  border: none;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  cursor: pointer;
+}
+
+.image-link-button img {
+  max-width: 100px;
+  max-height: 95px;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+.image-link-button:hover {
+  opacity: 0.8;
+}
+
+.jala-logo {
+  width: 95px;
+
+  color: #003b85;
+
+  font-size: 31px;
+
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.jala-logo span {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #00a9e8;
+
+  font-size: 8px;
+
+  letter-spacing: 0.5px;
+}
+
+/* =========================
+   STATUS CODES
+========================= */
+
+.status-code-links {
+  height: 172px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  gap: 31px;
+
+  padding-top: 43px;
+
+  box-sizing: border-box;
+}
+
+.status-code {
+  font-size: 14px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.status-code:hover {
+  text-decoration: underline;
+}
+
+.status-200 {
+  color: green;
+}
+
+.status-301 {
+  color: blue;
+}
+
+.status-404 {
+  color: red;
+}
+
+.status-500 {
+  color: red;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .links-card {
+    width: calc(100% - 30px);
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .links-tab {
+    padding: 0 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 650px) {
+  .links-page-header {
+    height: auto;
+
+    min-height: 74px;
+
+    padding: 15px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    gap: 8px;
+  }
+
+  .links-tabs {
+    overflow-x: auto;
+  }
+
+  .links-tab {
+    flex-shrink: 0;
+  }
+
+  .links-demo {
+    gap: 15px;
+  }
+
+  .image-links-container {
+    gap: 4px;
+  }
+
+  .image-link-button {
+    width: 75px;
+  }
+
+  .image-link-button img {
+    max-width: 70px;
+  }
+}
