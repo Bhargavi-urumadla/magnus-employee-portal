@@ -1,0 +1,248 @@
+MAGNUS EMPLOYEE PORTAL
+PROJECT REQUIREMENTS
+====================
+
+TASK FOR DEVELOPERS
+-------------------
+
+Develop this application in any technology of your choice and cover all
+CRUD operations and options available in the More Menu.
+
+Don't focus much on the UI. Develop the basic UI.
+
+Focus on business logic and different technologies to show your skills.
+
+
+EMPLOYEE MANAGEMENT REQUIREMENTS
+--------------------------------
+
+The application should support complete CRUD operations:
+
+1. Create Employee
+2. Read / View Employee
+3. Update Employee
+4. Delete Employee
+
+
+EMPLOYEE SEARCH REQUIREMENTS
+----------------------------
+
+The application should support:
+
+1. Search Employee
+2. Search by Name
+3. Search by Mobile Number
+4. Pagination
+5. Sorting
+6. Filtering
+
+
+EMPLOYEE FORM REQUIREMENTS
+--------------------------
+
+Employee information should include:
+
+1. First Name
+2. Last Name
+3. Email
+4. Mobile Number
+5. Date of Birth
+6. Gender
+7. Address
+8. Country
+9. City
+10. Other City
+11. Skills
+
+
+VALIDATION REQUIREMENTS
+-----------------------
+
+The application should validate employee information.
+
+Validation should include:
+
+1. Required fields
+2. First name validation
+3. Last name validation
+4. Email validation
+5. Mobile number validation
+6. Date of birth validation
+7. Gender validation
+8. Address validation
+9. Country validation
+10. City validation
+11. Skills validation
+12. Duplicate email validation
+
+
+MORE MENU REQUIREMENTS
+----------------------
+
+The following options available in the More Menu should be implemented:
+
+1. Multiple Tabs
+2. Menu
+3. Autocomplete
+4. Collapsible Content
+5. Images
+6. Slider
+7. Tooltips
+8. Popups
+9. Links
+10. CSS Properties
+11. iFrames
+
+
+TECHNICAL REQUIREMENTS
+----------------------
+
+The project should demonstrate:
+
+1. Frontend development
+2. Backend development
+3. REST API integration
+4. Database integration
+5. CRUD operations
+6. Form validation
+7. Search functionality
+8. Pagination
+9. Business logic
+10. Routing
+11. Error handling
+12. Different technologies and development skills
+
+
+REFERENCE APPLICATION
+---------------------
+
+Magnus Application:
+
+http://magnus.jalatechnologies.com
+
+
+PROJECT SUBMISSION
+------------------
+
+Share the project source code through Git or Bitbucket to schedule the
+interviews.
+
+
+CURRENT PROJECT TECHNOLOGIES
+----------------------------
+
+Frontend:
+- React.js
+- TypeScript
+- Vite
+- React Router DOM
+- HTML5
+- CSS3
+- Fetch API
+
+Backend:
+- Node.js
+- Express.js
+- TypeScript
+- MongoDB
+- Mongoose
+- CORS
+
+Tools:
+- Visual Studio Code
+- Git
+- GitHub
+- Postman
+- MongoDB Atlas
+- npm
+
+
+CURRENT PROJECT FEATURES
+------------------------
+
+The Magnus Employee Portal currently includes:
+
+- Login
+- Admin Login
+- Forgot Password
+- Protected Routes
+- Logout
+- Employee CRUD
+- Employee Search
+- Mobile Number Search
+- Pagination
+- Sorting
+- Filtering
+- Employee Form Validation
+- MongoDB Integration
+- REST API
+- More Menu Features
+
+
+AUTHENTICATION
+--------------
+
+Current authentication uses frontend login state stored in localStorage.
+
+JWT authentication is NOT currently implemented.
+
+
+DEMO LOGIN CREDENTIALS
+----------------------
+
+Email:
+training@jalaacademy.com
+
+Password:
+jobprogram
+
+
+DATABASE
+--------
+
+Database:
+magnus_employee_portal
+
+Collection:
+employees
+
+
+BACKEND API
+-----------
+
+Base URL:
+http://localhost:5000
+
+Employee API:
+http://localhost:5000/api/employees
+
+
+API ENDPOINTS
+-------------
+
+GET:
+http://localhost:5000/api/employees
+
+GET BY ID:
+http://localhost:5000/api/employees/:id
+
+CREATE:
+POST /api/employees
+
+UPDATE:
+PATCH /api/employees/:id
+
+DELETE:
+DELETE /api/employees/:id
+
+
+PROJECT OBJECTIVE
+-----------------
+
+The main objective of this project is to demonstrate full-stack development
+skills by implementing employee management, CRUD operations, business logic,
+REST APIs, database integration, validation, search, pagination, and the
+functionality available in the More Menu.
+
+The project prioritizes functionality and business logic over advanced UI
+design.
